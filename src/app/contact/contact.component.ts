@@ -4,11 +4,11 @@ import {
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
-  selector: 'about',
-  styleUrls: ['./about.component.css'],
-  templateUrl: './about.component.html'
+  selector: 'contact',
+  styleUrls: ['./contact.component.css'],
+  templateUrl: './contact.component.html'
 })
-export class AboutComponent {
+export class ContactComponent {
 
   constructor(
     public route: ActivatedRoute

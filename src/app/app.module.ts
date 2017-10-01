@@ -28,8 +28,10 @@ import { AppComponent } from './app.component';
 import { APP_RESOLVER_PROVIDERS } from './app.resolver';
 import { AppState, InternalStateType } from './app.service';
 import { HeaderNavComponent } from './header-nav';
+import { FooterNavComponent } from './footer-nav';
 import { HomeComponent } from './home';
 import { AboutComponent } from './about';
+import { ContactComponent } from './contact';
 import { NoContentComponent } from './no-content';
 import { XLargeDirective } from './home/x-large';
 
@@ -55,8 +57,10 @@ type StoreType = {
   bootstrap: [ AppComponent ],
   declarations: [
     AppComponent,
-    AboutComponent,
     HeaderNavComponent,
+    FooterNavComponent,
+    AboutComponent,
+    ContactComponent,
     HomeComponent,
     NoContentComponent,
     XLargeDirective

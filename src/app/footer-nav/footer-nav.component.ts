@@ -4,11 +4,12 @@ import {
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
-  selector: 'about',
-  styleUrls: ['./about.component.css'],
-  templateUrl: './about.component.html'
+  selector: 'footer-nav',
+  styleUrls: ['./footer-nav.component.css'],
+  templateUrl: './footer-nav.component.html'
 })
-export class AboutComponent {
+
+export class FooterNavComponent {
 
   constructor(
     public route: ActivatedRoute
