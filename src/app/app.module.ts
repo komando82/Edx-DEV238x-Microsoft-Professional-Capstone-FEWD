@@ -16,7 +16,7 @@ import {
 } from '@angular/router';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { AngularFontAwesomeModule } from 'angular-font-awesome/angular-font-awesome';
+import { Parallax, ParallaxConfig } from 'ngx-parallax';
 
 /*
  * Platform and Environment providers/directives/pipes
@@ -63,7 +63,8 @@ type StoreType = {
     ContactComponent,
     HomeComponent,
     NoContentComponent,
-    XLargeDirective
+    XLargeDirective,
+    Parallax
   ],
   /**
    * Import Angular's modules.
@@ -71,7 +72,6 @@ type StoreType = {
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    AngularFontAwesomeModule,
     FormsModule,
     HttpModule,
     RouterModule.forRoot(ROUTES, {

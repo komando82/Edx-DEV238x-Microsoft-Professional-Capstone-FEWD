@@ -1,0 +1,45 @@
+.parallax {
+    height: 350px;
+    width: 1900px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.plax-1 {
+    background-image: url('../../../src/assets/img/pexels-photo-349494-1.jpg');
+}
+
+.plax-2 {
+    background-image: url('../../../src/assets/img/pexels-photo-347149-1.jpg');
+}
+
+.plax-3 {
+    background-image: url('../../../src/assets/img/pexels-photo-346726-1.jpg');
+}
+
+.plax-4 {
+    background-image: url('../../../src/assets/img/pexels-photo-590510-1.jpg');
+}
+
+.plax-cnt {
+    padding: 40px 0;
+    text-align: center;
+}
+
+.pcnt-1 {
+    background-color: #ddd;
+}
+
+.pcnt-2 {
+    color: #ddd;
+    background-color: #000;
+}
+
+.pcnt-3 {
+    background-color: #ddd;
+}
+
+.pcnt-3 .btn-lg {
+    font-size: 3.25rem;
+}

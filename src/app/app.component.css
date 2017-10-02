@@ -6,3 +6,9 @@ html, body{
 a.active {
   background-color: gray;
 }
+
+.ttt {
+  background: url('https://www.w3schools.com/howto/img_parallax.jpg');
+  height: 250px;
+  width: 1900px;
+}
