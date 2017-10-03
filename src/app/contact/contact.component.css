@@ -1,0 +1,34 @@
+.contact-page {
+    padding: 200px 0;
+}
+
+.contact-page .submit {
+    cursor: pointer;
+}
+
+.contact-page .submit:disabled {
+    cursor: not-allowed;
+}
+
+.errorMessage {
+    height: 30px;
+    line-height: 26px;
+    color: #dc3545;
+}
+
+.contact-info .form-group {
+    height: 40px;
+    font-size: 20px;
+}
+
+.modal.show {
+    display: block;
+}
+
+.modal-backdrop {
+    display: none;
+}
+
+.modal-backdrop.show {
+    display: block;
+}

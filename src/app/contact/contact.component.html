@@ -1,1 +1,115 @@
-CONTACT
+<div class="container">
+    <div class="row contact-page">
+        <div class="col-md-6">
+            <form [formGroup]="form">
+
+                <div class="form-group">
+                    <input type="text" [(ngModel)]='name' class="form-control" id="name" formControlName="nameControl" placeholder="Name" [ngClass]="{
+                        'is-valid': !form.controls['nameControl'].invalid && (form.controls['nameControl'].dirty || form.controls['nameControl'].touched),
+                        'is-invalid': form.controls['nameControl'].invalid && (form.controls['nameControl'].dirty || form.controls['nameControl'].touched)
+                        }">
+                </div>
+                <div class="form-group">
+                    <input type="text" [(ngModel)]='email' class="form-control" id="email" formControlName="emailControl" placeholder="Email" [ngClass]="{
+                        'is-valid': !form.controls['emailControl'].invalid && (form.controls['emailControl'].dirty || form.controls['emailControl'].touched),
+                        'is-invalid': form.controls['emailControl'].invalid && (form.controls['emailControl'].dirty || form.controls['emailControl'].touched)
+                        }">
+                </div>
+                <div class="form-group">
+                    <select [(ngModel)]='subject' class="form-control" id="subject" formControlName="subjectControl" [ngClass]="{
+                        'is-valid': !form.controls['subjectControl'].invalid && (form.controls['subjectControl'].dirty || form.controls['subjectControl'].touched),
+                        'is-invalid': form.controls['subjectControl'].invalid && (form.controls['subjectControl'].dirty || form.controls['subjectControl'].touched)
+                        }">
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <textarea [(ngModel)]='message' class="form-control" rows="5" id="Message" formControlName="messageControl" placeholder="Message" [ngClass]="{
+                        'is-valid': !form.controls['messageControl'].invalid && (form.controls['messageControl'].dirty || form.controls['messageControl'].touched),
+                        'is-invalid': form.controls['messageControl'].invalid && (form.controls['messageControl'].dirty || form.controls['messageControl'].touched)
+                        }"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <div class='errorMessage'>
+
+                        <div *ngIf="!form.controls['nameControl'].valid && (form.controls['nameControl'].dirty || form.controls['nameControl'].touched)">
+                            <div [hidden]="!form.controls['nameControl'].hasError('required')">
+                                * Name is required.
+                            </div>
+                            <div [hidden]="!form.controls['nameControl'].hasError('minlength')">
+                                * Name must be at least 3 characters long.
+                            </div>
+                        </div>
+
+                        <div *ngIf="!form.controls['emailControl'].valid && (form.controls['emailControl'].dirty || form.controls['emailControl'].touched) &&
+                                    (form.controls['nameControl'].valid || !form.controls['nameControl'].touched)">
+                            <div [hidden]="!form.controls['emailControl'].hasError('required')">
+                                * Email is required.
+                            </div>
+                            <div [hidden]="!form.controls['emailControl'].hasError('minlength')">
+                                * Email must be at least 6 characters long.
+                            </div>
+                            <div [hidden]="!(!form.controls['emailControl'].hasError('minlength') && form.controls['emailControl'].hasError('pattern'))">
+                                * Email must be a valid email address.
+                            </div>
+                        </div>
+
+                        <div *ngIf="!form.controls['subjectControl'].valid && (form.controls['subjectControl'].dirty || form.controls['subjectControl'].touched) &&
+                                    (form.controls['nameControl'].valid || !form.controls['nameControl'].touched) &&
+                                    (form.controls['emailControl'].valid || !form.controls['emailControl'].touched)">
+                            <div [hidden]="!form.controls['subjectControl'].hasError('required')">
+                                * Subject is required.
+                            </div>
+                        </div>
+
+                        <div *ngIf="!form.controls['messageControl'].valid && (form.controls['messageControl'].dirty || form.controls['messageControl'].touched) &&
+                        (form.controls['nameControl'].valid || !form.controls['nameControl'].touched) &&
+                        (form.controls['emailControl'].valid || !form.controls['emailControl'].touched) &&
+                        (form.controls['subjectControl'].valid || !form.controls['subjectControl'].touched)">
+                            <div [hidden]="!form.controls['messageControl'].hasError('required')">
+                                * Message is required.
+                            </div>
+                            <div [hidden]="!form.controls['messageControl'].hasError('minlength')">
+                                * Message must be at least 6 characters long.
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <button [disabled]="!form.valid" (click)='onSubmitFormClick($event)' type="submit" class="btn btn-primary btn-lg submit">Submit</button>
+            
+            </form>
+        </div>
+
+        <div class="col-md-6 contact-info">
+            <div class="form-group">Have question about Grocery Cloud? Feel free to contact us!</div>
+            <div class="form-group"></div>
+            <div class="form-group">Email: <a href="mailto:grocerycloud@outlook.com">grocerycloud@outlook.com</a></div>
+            <div class="form-group">Phone: <a href="tel:+123-456-7890">+123-456-7890</a></div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                ...
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal-backdrop fade"></div>

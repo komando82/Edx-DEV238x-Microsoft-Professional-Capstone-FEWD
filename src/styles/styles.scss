@@ -4,6 +4,11 @@
 
 body {
   padding-top: 70px;
+  background: #343a40;
+}
+
+main {
+  background: #fff;
 }
 
 nav {
@@ -24,3 +29,4 @@ nav a {
 nav a.active {
   background-color: #0069d9;
 }
+
