@@ -31,7 +31,9 @@ import { HeaderNavComponent } from './header-nav';
 import { FooterNavComponent } from './footer-nav';
 import { HomeComponent } from './home';
 import { AboutComponent } from './about';
-import { ContactComponent } from './contact';
+import { ContactComponent } from './components/contact';
+import { ContactFormComponent } from './components/contact/contact-form';
+import { ContactModalComponent } from './components/contact/contact-modal';
 import { NoContentComponent } from './no-content';
 import { XLargeDirective } from './home/x-large';
 
@@ -61,6 +63,8 @@ type StoreType = {
     FooterNavComponent,
     AboutComponent,
     ContactComponent,
+    ContactFormComponent,
+    ContactModalComponent,
     HomeComponent,
     NoContentComponent,
     XLargeDirective,

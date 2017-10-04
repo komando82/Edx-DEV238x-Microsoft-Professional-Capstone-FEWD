@@ -1,19 +1,20 @@
-import {Component, Inject} from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { Component, Inject, Output, EventEmitter } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
-  selector: 'contact',
-  styleUrls: ['./contact.component.css'],
-  templateUrl: './contact.component.html'
+  selector: 'contact-form',
+  styleUrls: ['./contact-form.component.css'],
+  templateUrl: './contact-form.component.html'
 })
-export class ContactComponent {
+export class ContactFormComponent {
   public form: FormGroup;
 
   public name: string;
   public email: string;
   public subject: string;
   public message: string;
+
+  @Output() public onSubmitForm = new EventEmitter();
 
   constructor(@Inject(FormBuilder) fb: FormBuilder) {
     let EMAIL_REGEXP = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,6})+$/i;
@@ -36,13 +37,16 @@ export class ContactComponent {
 
   public onSubmitFormClick(event) {
     if (this.validation()) {
+      // this.form.reset();
 
-      console.log('click');
-      
-      console.log(this.name);
-      console.log(this.email);
-      console.log(this.subject);
-      console.log(this.message);
+      this.onSubmitForm.emit(
+          {
+              name: this.name,
+              email: this.email,
+              subject: this.subject,
+              message: this.message,
+          }
+      );
 
       this.form.reset();
     }
@@ -67,10 +71,9 @@ export class ContactComponent {
 
     return true;
   }
-    
+
   private validateEmail (email) {
       return /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,6})+$/.test(email);
   }
-  
 
 }
