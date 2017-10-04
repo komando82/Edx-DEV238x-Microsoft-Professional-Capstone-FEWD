@@ -7,6 +7,8 @@ import { AppState } from '../app.service';
 import { Title } from './title';
 import { XLargeDirective } from './x-large';
 
+import { ItemsDataService } from '../service/items-data.service';
+
 @Component({
   /**
    * The selector is what angular internally uses
@@ -39,7 +41,8 @@ export class HomeComponent implements OnInit {
    */
   constructor(
     public appState: AppState,
-    public title: Title
+    public title: Title,
+    private _itemsDataService: ItemsDataService,
   ) {}
 
   public ngOnInit() {
@@ -47,6 +50,9 @@ export class HomeComponent implements OnInit {
     /**
      * this.title.getData().subscribe(data => this.data = data);
      */
+    let items = this._itemsDataService.getItemsData();
+    console.log(items);
+    
   }
 
   public submitState(value: string) {

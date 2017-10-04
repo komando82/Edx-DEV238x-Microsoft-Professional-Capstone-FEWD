@@ -7,6 +7,7 @@ import {
   ViewEncapsulation
 } from '@angular/core';
 import { AppState } from './app.service';
+import { ItemsDataService } from './service/items-data.service';
 
 /**
  * App Component
@@ -19,6 +20,9 @@ import { AppState } from './app.service';
     './app.component.css'
   ],
   templateUrl: './app.component.html',
+  providers: [
+    ItemsDataService
+  ]
 })
 export class AppComponent implements OnInit {
   public angularclassLogo = 'assets/img/angularclass-avatar.png';
