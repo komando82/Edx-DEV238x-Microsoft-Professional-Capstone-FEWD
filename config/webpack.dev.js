@@ -34,7 +34,6 @@ const METADATA = {
   AOT: AOT
 };
 
-
 // const DllBundlesPlugin = require('webpack-dll-bundles-plugin').DllBundlesPlugin;
 
 /**

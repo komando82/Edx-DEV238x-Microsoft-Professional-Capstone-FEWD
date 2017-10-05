@@ -17,6 +17,7 @@ import {
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { Parallax, ParallaxConfig } from 'ngx-parallax';
+import { SwiperModule } from 'angular2-useful-swiper';
 
 /*
  * Platform and Environment providers/directives/pipes
@@ -29,13 +30,13 @@ import { APP_RESOLVER_PROVIDERS } from './app.resolver';
 import { AppState, InternalStateType } from './app.service';
 import { HeaderNavComponent } from './header-nav';
 import { FooterNavComponent } from './footer-nav';
-import { HomeComponent } from './home';
+import { HomeComponent } from './components/home';
+import { HomeCarouselComponent } from './components/home/home-carousel';
 import { AboutComponent } from './about';
 import { ContactComponent } from './components/contact';
 import { ContactFormComponent } from './components/contact/contact-form';
 import { ContactModalComponent } from './components/contact/contact-modal';
 import { NoContentComponent } from './no-content';
-import { XLargeDirective } from './home/x-large';
 
 import '../styles/bootstrap.scss';
 import '../styles/styles.scss';
@@ -66,8 +67,8 @@ type StoreType = {
     ContactFormComponent,
     ContactModalComponent,
     HomeComponent,
+    HomeCarouselComponent,
     NoContentComponent,
-    XLargeDirective,
     Parallax
   ],
   /**
@@ -79,6 +80,7 @@ type StoreType = {
     FormsModule,
     ReactiveFormsModule,
     HttpModule,
+    SwiperModule,
     RouterModule.forRoot(ROUTES, {
       useHash: Boolean(history.pushState) === false,
       preloadingStrategy: PreloadAllModules

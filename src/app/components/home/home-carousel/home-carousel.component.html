@@ -1,0 +1,57 @@
+<hr>
+<ul>
+    <li *ngFor="let item of randomImagesPerSlide">{{item}} ITEM Found!</li>
+</ul>
+<hr>
+{{totalSlideImages}}
+<hr>
+
+<br>
+<br>
+<div class="container">
+    <swiper [config]="config">
+        <div class="swiper-wrapper">
+            <div *ngFor="let number of randomImagesPerSlide" class="swiper-slide" style="width: 600px;margin: 20px auto;">
+                <div *ngIf="number == 1" class="row">
+                    <div class="col-sm-12" style="background-color:red;height: 100px;"></div>
+                </div>
+                <div *ngIf="number == 2" class="row">
+                    <div class="col-md-6" style="background-color:red;height: 100px;"></div>
+                    <div class="col-md-6" style="background-color:blue;height: 100px;"></div>
+                </div>
+                <div *ngIf="number == 3" class="row">
+                    <div class="col-md-6" style="background-color:red;height: 100px;"></div>
+                    <div class="col-md-6">
+                        <div class="row">
+                            <div class="col-sm-12" style="background-color:green;height: 50px;"></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12" style="background-color:blue;height: 50px;"></div>
+                        </div>
+                    </div>
+                </div>
+                <div *ngIf="number == 4" class="row">
+                    <div class="col-md-6">
+                        <div class="row">
+                            <div class="col-sm-12" style="background-color:green;height: 50px;"></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12" style="background-color:blue;height: 50px;"></div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="row">
+                            <div class="col-sm-12" style="background-color:orange;height: 50px;"></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12" style="background-color:red;height: 50px;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Add Arrows -->
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+    </swiper>
+</div>
