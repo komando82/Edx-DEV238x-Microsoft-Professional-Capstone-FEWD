@@ -8,6 +8,7 @@ import {
 } from '@angular/core';
 import { AppState } from './app.service';
 import { ItemsDataService } from './service/items-data.service';
+import { HomeSliderService } from './service/home-slider.service';
 
 /**
  * App Component
@@ -21,7 +22,8 @@ import { ItemsDataService } from './service/items-data.service';
   ],
   templateUrl: './app.component.html',
   providers: [
-    ItemsDataService
+    ItemsDataService,
+    HomeSliderService
   ]
 })
 export class AppComponent implements OnInit {

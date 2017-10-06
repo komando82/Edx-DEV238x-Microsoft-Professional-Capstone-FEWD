@@ -10,13 +10,58 @@ import 'rxjs/add/observable/throw';
 export class ItemsDataService {
 
     private itemsDataUrl: string = 'https://webmppcapstone.blob.core.windows.net/data/itemsdata.json';
-    private itemsData: any;
-    private allImages: any;
 
-    constructor(private _http: Http) {
-        this.getItemsData();
+    private itemsData: any;
+    private allImageItems: any;
+
+    constructor(private _http: Http) {}
+
+    public getItemsData() {
+        let headers = new Headers({
+            'Content-Type': 'application/json'
+        });
+
+        return new Observable(observer => {
+            if (this.itemsData) {
+                observer.next(this.itemsData);
+                return observer.complete();
+            }
+            this._http
+                .get(this.itemsDataUrl, { headers })
+                .map((response: Response) => response.json())
+                .subscribe(
+                    (res) => {
+                        // console.log(res);
+                        this.itemsData = res;
+                        observer.next(this.itemsData);
+                        return observer.complete();
+                    },
+                    (error) => {
+                        console.log(error);
+                    });
+        })
     }
 
+    public getAllImageItems(itemsData) {
+        let allImages = [];
+        
+        for (let item in itemsData) {
+            let subcategories = itemsData[item].subcategories;
+
+            for (let subcategorie in subcategories) {
+                let items = subcategories[subcategorie].items;
+
+                for (let item in items) {
+                    allImages.push(items[item]);
+                }
+            }
+        }
+
+        return allImages;
+    }
+
+
+    /*
     public getItemsData() {
         let headers = new Headers({
             'Content-Type': 'application/json'
@@ -37,6 +82,10 @@ export class ItemsDataService {
             ;
     }
 
+*/
+
+
+    /*
     public getAllImages() {
         //if (this.checkIsDataNotEmpty(this.allImages)) {
             return this.collectAllImages(this.itemsData);
@@ -70,5 +119,5 @@ export class ItemsDataService {
 
         return true;
     }
-
+*/
 }
