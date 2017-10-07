@@ -41,7 +41,7 @@ export class ItemsDataService {
                     });
         })
     }
-
+/*
     public getAllImageItems(itemsData) {
         let allImages = [];
         
@@ -59,7 +59,7 @@ export class ItemsDataService {
 
         return allImages;
     }
-
+*/
 
     /*
     public getItemsData() {

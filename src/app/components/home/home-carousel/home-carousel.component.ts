@@ -18,10 +18,10 @@ export class HomeCarouselComponent implements OnInit {
     public numberOfSlides: number;
     
     public randomImagesPerSlide: Array<number> = [];
+    public randomImagesPerSlideHelper: Array<number> = [];
     public totalImagesForSlides: number;
 
-    public itemsData: any;
-    public images: any;
+    public images: Array<any> = [];
 
     public config: SwiperOptions = {
         pagination: '.swiper-pagination',
@@ -41,17 +41,19 @@ export class HomeCarouselComponent implements OnInit {
 
         this.numberOfSlides = this._homeSliderService.getNumberOfSlides();
         this.randomImagesPerSlide = this._homeSliderService.getRandomImagesPerSlide();
+        this.randomImagesPerSlideHelper = this._homeSliderService.getRandomImagesPerSlideHelper();
         this.totalImagesForSlides = this._homeSliderService.getTotalImagesForSlides();
 
-        console.log(this._homeSliderService.getRandomImagesPerSlide());
+        console.log(this.numberOfSlides);
+        console.log(this.randomImagesPerSlide);
+        console.log(this.totalImagesForSlides);
+
+        //console.log(this._homeSliderService.getRandomImagesPerSlide());
 
         this._itemsDataService.getItemsData()
             .subscribe((itemsData) => {
-                this.itemsData = itemsData;
-                console.log(this.itemsData);
-                console.log('Yup');
-
-                console.log(this._itemsDataService.getAllImageItems(this.itemsData));
+                this.images = this._homeSliderService.collectRandomImages(itemsData);
+                console.log(this.images);
             });
       
     }
