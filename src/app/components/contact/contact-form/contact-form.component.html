@@ -17,10 +17,10 @@
             'is-valid': !form.controls['subjectControl'].invalid && (form.controls['subjectControl'].dirty || form.controls['subjectControl'].touched),
             'is-invalid': form.controls['subjectControl'].invalid && (form.controls['subjectControl'].dirty || form.controls['subjectControl'].touched)
             }">
-            <option>1</option>
-            <option>2</option>
-            <option>3</option>
-            <option>4</option>
+            <option>Subject Example 1</option>
+            <option>Subject Example 2</option>
+            <option>Subject Example 3</option>
+            <option>Subject Example 4</option>
         </select>
     </div>
     <div class="form-group">
@@ -78,6 +78,6 @@
         </div>
     </div>
 
-    <button [disabled]="!form.valid" (click)='onSubmitFormClick($event)' type="submit" class="btn btn-primary btn-lg submit">Submit</button>
+    <button [disabled]="!form.valid" (click)='onSubmitFormClick($event)' type="submit" class="btn btn-primary btn-lg submit">Send</button>
 
 </form>

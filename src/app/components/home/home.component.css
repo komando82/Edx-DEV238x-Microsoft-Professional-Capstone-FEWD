@@ -1,1 +1,7 @@
-/*styles for home content only*/
+.home-heading {
+    padding: 40px 0;
+}
+
+.home-heading button {
+    cursor: pointer;
+}

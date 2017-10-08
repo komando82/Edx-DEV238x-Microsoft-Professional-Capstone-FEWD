@@ -1,6 +1,7 @@
 import {
     Component,
-    OnInit
+    OnInit,
+    ViewChild
 } from '@angular/core';
   
 import { ItemsDataService } from '../../../service/items-data.service';
@@ -10,10 +11,16 @@ import { SwiperModule } from 'angular2-useful-swiper';
   
 @Component({
     selector: 'home-carousel',
-    styleUrls: [ './home-carousel.component.css' ],
+    styleUrls: [ 
+        './home-carousel.component.css', 
+        './bootstrap-toggle.min.css',  
+        './swiper.min.css'
+    ],
     templateUrl: './home-carousel.component.html'
 })
 export class HomeCarouselComponent implements OnInit {
+
+    @ViewChild('usefulSwiper') usefulSwiper: any;
 
     public numberOfSlides: number;
     
@@ -23,13 +30,16 @@ export class HomeCarouselComponent implements OnInit {
 
     public images: Array<any> = [];
 
+    public toggleOnOff: boolean = true;
+
     public config: SwiperOptions = {
         pagination: '.swiper-pagination',
         paginationClickable: true,
         nextButton: '.swiper-button-next',
         prevButton: '.swiper-button-prev',
         spaceBetween: 30,
-        autoplay: 1000
+        autoplay: 1000,
+        loop: true,
     };
 
     constructor(
@@ -44,18 +54,29 @@ export class HomeCarouselComponent implements OnInit {
         this.randomImagesPerSlideHelper = this._homeSliderService.getRandomImagesPerSlideHelper();
         this.totalImagesForSlides = this._homeSliderService.getTotalImagesForSlides();
 
-        console.log(this.numberOfSlides);
-        console.log(this.randomImagesPerSlide);
-        console.log(this.totalImagesForSlides);
-
-        //console.log(this._homeSliderService.getRandomImagesPerSlide());
-
         this._itemsDataService.getItemsData()
             .subscribe((itemsData) => {
                 this.images = this._homeSliderService.collectRandomImages(itemsData);
                 console.log(this.images);
             });
       
+    }
+
+    public toggleOnOffClick(event) {
+        this.toggleOnOff = !this.toggleOnOff;
+
+        if(this.toggleOnOff) {
+            this.usefulSwiper.swiper.startAutoplay();
+        }
+        else {
+            this.usefulSwiper.swiper.stopAutoplay();
+        }
+    }
+
+    public prevNextClick(event) {
+        if(this.toggleOnOff) {
+            this.toggleOnOff = !this.toggleOnOff;
+        }
     }
 
 }

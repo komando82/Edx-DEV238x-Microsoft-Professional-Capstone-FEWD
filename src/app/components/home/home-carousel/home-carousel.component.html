@@ -1,127 +1,117 @@
-<hr>
-
-<!--
-
-<div class="container">
-    <div *ngIf="images.length > 0">
-        <swiper [config]="config">
-            <div class="swiper-wrapper">
-                <div *ngFor="let number of randomImagesPerSlide; let i=index" class="swiper-slide" style="width: 600px;margin: 20px auto;">
-                    <div *ngIf="number == 1" class="row">
-                        <div class="col-sm-12" style="height: 600px;">
-                            <img src="{{ images[randomImagesPerSlideHelper[i]].imagelink }}" alt="" style="max-width: 100%;max-height: 100%;">
-                        </div>
-                    </div>
-                    <div *ngIf="number == 2" class="row">
-                        <div class="col-md-6" style="height: 600px;">
-                            <img src="{{ images[randomImagesPerSlideHelper[i]].imagelink }}" alt="" style="max-width: 100%;max-height: 100%;">
-                        </div>
-                        <div class="col-md-6" style="height: 600px;">
-                            <img src="{{ images[randomImagesPerSlideHelper[i] + 1].imagelink }}" alt="" style="max-width: 100%;max-height: 100%;">
-                        </div>
-                    </div>
-                    <div *ngIf="number == 3" class="row">
-                        <div class="col-md-6" style="height: 600px;">
-                            <img src="{{ images[randomImagesPerSlideHelper[i]].imagelink }}" alt="" style="max-width: 100%;max-height: 100%;">
-                        </div>
-                        <div class="col-md-6">
-                            <div class="row">
-                                <div class="col-sm-12" style="height: 300px;">
-                                    <img src="{{ images[randomImagesPerSlideHelper[i] + 1].imagelink }}" alt="" style="max-width: 100%;max-height: 100%;">
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-12" style="height: 300px;">
-                                    <img src="{{ images[randomImagesPerSlideHelper[i] + 2].imagelink }}" alt="" style="max-width: 100%;max-height: 100%;">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div *ngIf="number == 4" class="row">
-                        <div class="col-md-6">
-                            <div class="row">
-                                <div class="col-sm-12" style="height: 300px;">
-                                    <img src="{{ images[randomImagesPerSlideHelper[i]].imagelink }}" alt="" style="max-width: 100%;max-height: 100%;">
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-12" style="height: 300px;">
-                                    <img src="{{ images[randomImagesPerSlideHelper[i] + 1].imagelink }}" alt="" style="max-width: 100%;max-height: 100%;">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="row">
-                                <div class="col-sm-12" style="height: 300px;">
-                                    <img src="{{ images[randomImagesPerSlideHelper[i] + 2].imagelink }}" alt="" style="max-width: 100%;max-height: 100%;">
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-12" style="height: 300px;">
-                                    <img src="{{ images[randomImagesPerSlideHelper[i] + 3].imagelink }}" alt="" style="max-width: 100%;max-height: 100%;">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>-->
-            <!-- Add Arrows -->
-            <!--<div class="swiper-button-next"></div>
-            <div class="swiper-button-prev"></div>
-        </swiper>
+<div *ngIf="images.length > 0" class="swiper-outer-container">
+    <div class="toggle-container">
+        <div class="toggle btn toggle-on-off pull-right" data-toggle="toggle" (click)='toggleOnOffClick($event)' [ngClass]="{
+            'btn-primary': toggleOnOff,
+            'btn-on-off off': !toggleOnOff
+            }">
+            <input type="checkbox" checked="" data-toggle="toggle">
+            <div class="toggle-group">
+                <label class="btn btn-primary toggle-on">On</label>
+                <label class="btn btn-default active toggle-off">Off</label>
+                <span class="toggle-handle btn btn-on-off"></span>
+            </div>
+        </div>
+        <div class="pull-right toggle-slide-show">
+            Toggle Slide Show
+        </div>
     </div>
-</div>
--->
-
-
-<hr>
-
-<br>
-<br>
-<div class="container">
-    <swiper [config]="config">
+    
+    <swiper [config]="config" #usefulSwiper class="sw">
         <div class="swiper-wrapper">
-            <div *ngFor="let number of randomImagesPerSlide" class="swiper-slide" style="width: 600px;margin: 20px auto;">
-                <div *ngIf="number == 1" class="row">
-                    <div class="col-sm-12" style="background-color:red;height: 100px;"></div>
+            <div *ngFor="let number of randomImagesPerSlide; let i=index" class="swiper-slide">
+                <div *ngIf="number == 1" class="row swiper-image-box">
+                    <div class="col-sm-12 text-center align-middle swiper-image-wrapper">
+                        <!--<img src="{{ images[randomImagesPerSlideHelper[i]].imagelink }}" alt="" style="max-width: 100%;max-height: 100%;">-->
+                        <a href="#">
+                            <img alt="" src="/assets/img/pexels-photo-346726-1.jpg">
+                        </a>
+                    </div>
                 </div>
-                <div *ngIf="number == 2" class="row">
-                    <div class="col-md-6" style="background-color:red;height: 100px;"></div>
-                    <div class="col-md-6" style="background-color:blue;height: 100px;"></div>
+                <div *ngIf="number == 2" class="row swiper-image-box">
+                    <div class="col-md-6 text-center align-middle swiper-image-wrapper">
+                        <!--<img src="{{ images[randomImagesPerSlideHelper[i]].imagelink }}" alt="" style="max-width: 100%;max-height: 100%;">-->
+                        <a href="#">
+                            <img alt="" src="/assets/img/pexels-photo-346726-1.jpg">
+                        </a>
+                    </div>
+                    <div class="col-md-6 text-center align-middle swiper-image-wrapper">
+                        <!--<img src="{{ images[randomImagesPerSlideHelper[i] + 1].imagelink }}" alt="" style="max-width: 100%;max-height: 100%;">-->
+                        <a href="#">
+                            <img alt="" src="/assets/img/pexels-photo-346726-1.jpg">
+                        </a>
+                    </div>
                 </div>
-                <div *ngIf="number == 3" class="row">
-                    <div class="col-md-6" style="background-color:red;height: 100px;"></div>
+                <div *ngIf="number == 3" class="row swiper-image-box">
+                    <div class="col-md-6 text-center align-middle swiper-image-wrapper">
+                        <!--<img src="{{ images[randomImagesPerSlideHelper[i]].imagelink }}" alt="" style="max-width: 100%;max-height: 100%;">-->
+                        <a href="#">
+                            <img alt="" src="/assets/img/pexels-photo-346726-1.jpg">
+                        </a>
+                    </div>
                     <div class="col-md-6">
                         <div class="row">
-                            <div class="col-sm-12" style="background-color:green;height: 50px;"></div>
+                            <div class="col-sm-12 text-center align-middle swiper-image-wrapper-half">
+                                <!--<img src="{{ images[randomImagesPerSlideHelper[i] + 1].imagelink }}" alt="" style="max-width: 100%;max-height: 100%;">-->
+                                <a href="#">
+                                    <img alt="" src="/assets/img/pexels-photo-346726-1.jpg">
+                                </a>
+                            </div>
                         </div>
                         <div class="row">
-                            <div class="col-sm-12" style="background-color:blue;height: 50px;"></div>
+                            <div class="col-sm-12 text-center align-middle swiper-image-wrapper-half">
+                                <!--<img src="{{ images[randomImagesPerSlideHelper[i] + 2].imagelink }}" alt="" style="max-width: 100%;max-height: 100%;">-->
+                                <a href="#">
+                                    <img alt="" src="/assets/img/pexels-photo-346726-1.jpg">
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div *ngIf="number == 4" class="row">
+                <div *ngIf="number == 4" class="row swiper-image-box">
                     <div class="col-md-6">
                         <div class="row">
-                            <div class="col-sm-12" style="background-color:green;height: 50px;"></div>
+                            <div class="col-sm-12 text-center align-middle swiper-image-wrapper-half">
+                                <!--<img src="{{ images[randomImagesPerSlideHelper[i]].imagelink }}" alt="" style="max-width: 100%;max-height: 100%;">-->
+                                <a href="#">
+                                    <img alt="" src="/assets/img/pexels-photo-346726-1.jpg">
+                                </a>
+                            </div>
                         </div>
                         <div class="row">
-                            <div class="col-sm-12" style="background-color:blue;height: 50px;"></div>
+                            <div class="col-sm-12 text-center align-middle swiper-image-wrapper-half">
+                                <!--<img src="{{ images[randomImagesPerSlideHelper[i] + 1].imagelink }}" alt="" style="max-width: 100%;max-height: 100%;">-->
+                                <a href="#">
+                                    <img alt="" src="/assets/img/pexels-photo-346726-1.jpg">
+                                </a>
+                            </div>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="row">
-                            <div class="col-sm-12" style="background-color:orange;height: 50px;"></div>
+                            <div class="col-sm-12 text-center align-middle swiper-image-wrapper-half">
+                                <!--<img src="{{ images[randomImagesPerSlideHelper[i] + 2].imagelink }}" alt="" style="max-width: 100%;max-height: 100%;">-->
+                                <a href="#">
+                                    <img alt="" src="/assets/img/pexels-photo-346726-1.jpg">
+                                </a>
+                            </div>
                         </div>
                         <div class="row">
-                            <div class="col-sm-12" style="background-color:red;height: 50px;"></div>
+                            <div class="col-sm-12 text-center swiper-image-wrapper-half">
+                                <!--<img src="{{ images[randomImagesPerSlideHelper[i] + 3].imagelink }}" alt="" style="max-width: 100%;max-height: 100%;">-->
+                                <a href="#">
+                                    <img alt="" src="/assets/img/pexels-photo-346726-1.jpg">
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <!-- Add Arrows -->
-        <div class="swiper-button-next"></div>
-        <div class="swiper-button-prev"></div>
     </swiper>
+
+    <!-- Add Arrows -->
+    <div class="swiper-button-next" (click)='prevNextClick($event)'></div>
+    <div class="swiper-button-prev" (click)='prevNextClick($event)'></div>
+
 </div>
+

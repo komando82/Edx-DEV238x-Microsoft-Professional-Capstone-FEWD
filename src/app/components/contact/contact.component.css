@@ -1,5 +1,9 @@
 .contact-page {
-    padding: 200px 0;
+    padding: 0 0 200px;
+}
+
+.contact-heading {
+    padding: 150px 0 0;
 }
 
 .contact-info .form-group {

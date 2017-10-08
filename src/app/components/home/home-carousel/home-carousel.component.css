@@ -1,0 +1,85 @@
+.sw {
+    overflow: hidden;
+}
+
+.swiper-outer-container {
+    position: relative;
+}
+
+.swiper-outer-container .swiper-button-prev {
+    left: -50px;
+}
+
+.swiper-outer-container .swiper-button-next {
+    right: -50px;
+}
+
+.swiper-slide {
+    width: 600px;
+    margin: 20px auto;
+}
+
+.swiper-wrapper img {
+    max-width: 100%;
+    max-height: 100%;
+    display: inline-block;
+}
+
+.swiper-image-box {
+    margin-left: 0;
+    margin-right: 0;
+}
+
+.swiper-image-wrapper {
+    height: 600px;
+    line-height: 600px;
+}
+
+.swiper-image-wrapper-half {
+    height: 300px;
+    line-height: 300px;
+}
+
+.swiper-image-wrapper,
+.swiper-image-wrapper-half {
+    border: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.swiper-image-wrapper a,
+.swiper-image-wrapper-half a {
+    display: inline-block;
+    height: 100%;
+    width: 100%;
+}
+
+.toggle-container {
+    height: 34px;
+}
+
+.toggle-on-off {
+    cursor: pointer;
+    width: 58px; 
+    height: 34px;
+}
+
+.toggle-on-off.off {
+    color: #333;
+    background-color: #e6e6e6;
+    border-color: #adadad;
+}
+
+.toggle-on-off label {
+    cursor: pointer;
+}
+
+.btn-on-off {
+    color: #292b2c;
+    background-color: #fff;
+    border-color: #ccc;
+}
+
+.toggle-slide-show {
+    height: 34px;
+    line-height: 34px;
+    margin-right: 15px;
+}
