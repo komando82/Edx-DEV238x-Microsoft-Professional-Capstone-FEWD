@@ -32,10 +32,11 @@ import { HeaderNavComponent } from './header-nav';
 import { FooterNavComponent } from './footer-nav';
 import { HomeComponent } from './components/home';
 import { HomeCarouselComponent } from './components/home/home-carousel';
-import { AboutComponent } from './about';
+import { AboutComponent } from './components/about';
 import { ContactComponent } from './components/contact';
 import { ContactFormComponent } from './components/contact/contact-form';
 import { ContactModalComponent } from './components/contact/contact-modal';
+import { ProductComponent } from './components/product';
 import { NoContentComponent } from './no-content';
 
 import '../styles/bootstrap.scss';
@@ -68,6 +69,7 @@ type StoreType = {
     ContactModalComponent,
     HomeComponent,
     HomeCarouselComponent,
+    ProductComponent,
     NoContentComponent,
     Parallax
   ],

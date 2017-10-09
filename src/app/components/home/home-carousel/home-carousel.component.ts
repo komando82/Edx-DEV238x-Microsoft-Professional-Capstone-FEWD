@@ -56,7 +56,9 @@ export class HomeCarouselComponent implements OnInit {
 
         this._itemsDataService.getItemsData()
             .subscribe((itemsData) => {
-                this.images = this._homeSliderService.collectRandomImages(itemsData);
+                let imagesArray = this._itemsDataService.getSlidesImages(itemsData);
+                this.images = this._homeSliderService.collectRandomImages(imagesArray);
+
                 console.log(this.images);
             });
       

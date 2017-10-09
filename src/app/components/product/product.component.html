@@ -1,0 +1,20 @@
+<div class="container product-container">
+    <div class="row go-back">
+        <button class="btn btn-primary btn-lg" (click)='onBackButtonClick($event)'><< Go Back</button>
+    </div>
+    <div class="row product-row" *ngIf="product">
+        <div class="col-md-6 text-center">
+            <img alt="" [src]="product.imagelink">
+        </div>
+    
+        <div class="col-md-6 text-center">
+            <h2>{{ product.name }}</h2>
+            <h3>Rating: {{ product.rating }} / 5</h3>
+            <p>Stock: {{ product.stock }}</p>
+            <p>${{ product.price }}</p>
+            <p><em>{{ product.description }}</em></p>
+            <p>Qty: <input [(ngModel)]='productQty' type="number" min="1" max="100" value="{{productQty}}"></p>
+            <p><button class="btn btn-primary" [disabled]="productQty < 1 || productQty > 100" (click)='onAddProductToCartClick($event)'>Add</button></p>
+        </div>
+    </div>
+</div>

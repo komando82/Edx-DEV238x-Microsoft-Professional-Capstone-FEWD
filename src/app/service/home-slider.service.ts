@@ -9,9 +9,8 @@ export class HomeSliderService {
     private randomImagesPerSlideHelper: Array<number> = [];
     private totalImagesForSlides: number;
 
-    private imagesArray = [];
-    private randomImagesIndexes = [];
-    private slidesImages = [];
+    private randomImagesIndexes: Array<number>  = [];
+    private slidesImages: Array<any>  = [];
 
     constructor() {
         this.generateRandomImagesPerSlide();
@@ -36,20 +35,20 @@ export class HomeSliderService {
         return this.totalImagesForSlides;
     }
 
-    public collectRandomImages(itemsData) {
+    public getRandomImagesIndexesProp() {
+        return this.randomImagesIndexes;
+    }
+
+    public collectRandomImages(imagesArray) {
         if (this.slidesImages.length !== 0) {
             return this.slidesImages;
         }
 
-        if (this.imagesArray.length === 0) {
-            this.imagesArray = this.getAllImageItems(itemsData);
-        }
-
         if (this.randomImagesIndexes.length === 0) {
-            this.randomImagesIndexes = this.getRandomImagesIndexes(this.imagesArray.length, this.totalImagesForSlides);
+            this.randomImagesIndexes = this.getRandomImagesIndexes(imagesArray.length, this.totalImagesForSlides);
         }
 
-        this.slidesImages = this.getRandomImages(this.randomImagesIndexes, this.imagesArray);
+        this.slidesImages = this.getRandomImages(this.randomImagesIndexes, imagesArray);
 
         return this.slidesImages;
     }
@@ -68,24 +67,6 @@ export class HomeSliderService {
                 this.totalImagesForSlides += rand;
             }
         }
-    }
-
-    private getAllImageItems(itemsData) {
-        let allImages = [];
-        
-        for (let item in itemsData) {
-            let subcategories = itemsData[item].subcategories;
-
-            for (let subcategorie in subcategories) {
-                let items = subcategories[subcategorie].items;
-
-                for (let item in items) {
-                    allImages.push(items[item]);
-                }
-            }
-        }
-
-        return allImages;
     }
 
     private getRandomImagesIndexes(imagesArrayLength, requiredImagesNum) {

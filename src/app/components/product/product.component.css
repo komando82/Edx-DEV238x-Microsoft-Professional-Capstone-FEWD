@@ -1,0 +1,17 @@
+.go-back {
+    padding: 10px 0;
+}
+
+.product-container {
+    padding: 100px 0 150px;
+}
+
+.product-container button {
+    cursor: pointer;
+}
+
+.product-container img {
+    display: inline-block;
+    max-height: 100%;
+    max-width: 100%;
+}

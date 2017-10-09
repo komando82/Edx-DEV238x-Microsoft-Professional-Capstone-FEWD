@@ -9,6 +9,7 @@ import {
 import { AppState } from './app.service';
 import { ItemsDataService } from './service/items-data.service';
 import { HomeSliderService } from './service/home-slider.service';
+import { ProductService } from './service/product.service';
 
 /**
  * App Component
@@ -23,7 +24,8 @@ import { HomeSliderService } from './service/home-slider.service';
   templateUrl: './app.component.html',
   providers: [
     ItemsDataService,
-    HomeSliderService
+    HomeSliderService,
+    ProductService
   ]
 })
 export class AppComponent implements OnInit {

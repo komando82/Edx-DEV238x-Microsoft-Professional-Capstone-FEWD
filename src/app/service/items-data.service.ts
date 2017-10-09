@@ -12,7 +12,7 @@ export class ItemsDataService {
     private itemsDataUrl: string = 'https://webmppcapstone.blob.core.windows.net/data/itemsdata.json';
 
     private itemsData: any;
-    private allImageItems: any;
+    private slidesImages: Array<any> = [];
 
     constructor(private _http: Http) {}
 
@@ -41,9 +41,18 @@ export class ItemsDataService {
                     });
         })
     }
-/*
-    public getAllImageItems(itemsData) {
+
+    public getSlidesImages(itemsData) {
+        if (this.slidesImages.length === 0) {
+            return this.getAllImageItems(itemsData);
+        }
+
+        return this.slidesImages;
+    }
+
+    private getAllImageItems(itemsData) {
         let allImages = [];
+        let i = 0;
         
         for (let item in itemsData) {
             let subcategories = itemsData[item].subcategories;
@@ -52,72 +61,18 @@ export class ItemsDataService {
                 let items = subcategories[subcategorie].items;
 
                 for (let item in items) {
+                    items[item].id = i;
                     allImages.push(items[item]);
+                    
+                    i++;
                 }
             }
         }
 
-        return allImages;
-    }
-*/
+        this.slidesImages = allImages;
 
-    /*
-    public getItemsData() {
-        let headers = new Headers({
-            'Content-Type': 'application/json'
-        });
-
-        return this._http.get(this.itemsDataUrl, { headers })
-            .map((response: Response) => response.json())
-            .catch((error: any) => Observable.throw(error))
-            .subscribe(
-                (res) => {
-                    console.log(res);
-                    this.itemsData = res;
-                    //this.allImages = this.collectAllImages(res);
-                },
-                (error) => {
-                    console.log(error);
-                })
-            ;
+        return this.slidesImages;
     }
 
-*/
 
-
-    /*
-    public getAllImages() {
-        //if (this.checkIsDataNotEmpty(this.allImages)) {
-            return this.collectAllImages(this.itemsData);
-        //}
-
-        //return [];
-    }
-
-    private collectAllImages(itemsData) {
-        let allImages = [];
-
-        for (let item in itemsData) {
-            let subcategories = itemsData[item].subcategories;
-
-            for (let subcategorie in subcategories) {
-                let items = subcategories[subcategorie].items;
-
-                for (let item in items) {
-                    allImages.push(items[item].imagelink);
-                }
-            }
-        }
-
-        return allImages;
-    }
-
-    private checkIsDataNotEmpty(data) {
-        if (data === undefined) {
-            return false;
-        }
-
-        return true;
-    }
-*/
 }
