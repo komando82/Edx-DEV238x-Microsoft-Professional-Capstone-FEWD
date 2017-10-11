@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'contact-form',
-  styleUrls: ['./contact-form.component.css'],
+  styleUrls: ['./contact-form.component.scss'],
   templateUrl: './contact-form.component.html'
 })
 export class ContactFormComponent {

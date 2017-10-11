@@ -6,7 +6,7 @@ import { ItemsDataService } from '../../service/items-data.service';
 
 @Component({
   selector: 'product',
-  styleUrls: ['./product.component.css'],
+  styleUrls: ['./product.component.scss'],
   templateUrl: './product.component.html'
 })
 export class ProductComponent implements OnInit {

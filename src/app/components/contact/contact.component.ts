@@ -5,7 +5,7 @@ import { ContactModalComponent } from './contact-modal';
 
 @Component({
   selector: 'contact',
-  styleUrls: ['./contact.component.css'],
+  styleUrls: ['./contact.component.scss'],
   templateUrl: './contact.component.html'
 })
 export class ContactComponent {

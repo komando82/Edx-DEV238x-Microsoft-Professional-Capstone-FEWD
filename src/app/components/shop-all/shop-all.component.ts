@@ -5,7 +5,7 @@ import { ShopAllService } from '../../service/shop-all.service';
 
 @Component({
   selector: 'shop-all',
-  styleUrls: ['./shop-all.component.css'],
+  styleUrls: ['./shop-all.component.scss'],
   templateUrl: './shop-all.component.html'
 })
 export class ShopAllComponent implements OnInit  {

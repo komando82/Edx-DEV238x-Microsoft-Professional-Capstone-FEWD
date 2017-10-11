@@ -3,7 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'footer-nav',
-  styleUrls: ['./footer-nav.component.css'],
+  styleUrls: ['./footer-nav.component.scss'],
   templateUrl: './footer-nav.component.html'
 })
 

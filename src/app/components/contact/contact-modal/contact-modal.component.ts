@@ -2,7 +2,7 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'contact-modal',
-  styleUrls: ['./contact-modal.component.css'],
+  styleUrls: ['./contact-modal.component.scss'],
   templateUrl: './contact-modal.component.html'
 })
 export class ContactModalComponent {

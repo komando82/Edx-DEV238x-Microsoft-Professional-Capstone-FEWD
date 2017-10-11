@@ -8,7 +8,7 @@ import { SwiperModule } from 'angular2-useful-swiper';
 @Component({
     selector: 'home-carousel',
     styleUrls: [ 
-        './home-carousel.component.css', 
+        './home-carousel.component.scss', 
         './bootstrap-toggle.min.css',  
         './swiper.min.css'
     ],
