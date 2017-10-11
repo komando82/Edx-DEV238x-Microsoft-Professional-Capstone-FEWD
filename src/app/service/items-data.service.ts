@@ -12,7 +12,7 @@ export class ItemsDataService {
     private itemsDataUrl: string = 'https://webmppcapstone.blob.core.windows.net/data/itemsdata.json';
 
     private itemsData: any;
-    private slidesImages: Array<any> = [];
+    private imagesData: Array<any> = [];
 
     constructor(private _http: Http) {}
 
@@ -42,15 +42,15 @@ export class ItemsDataService {
         })
     }
 
-    public getSlidesImages(itemsData) {
-        if (this.slidesImages.length === 0) {
-            return this.getAllImageItems(itemsData);
+    public getImagesData(itemsData) {
+        if (this.imagesData.length === 0) {
+            return this.collectImagesData(itemsData);
         }
 
-        return this.slidesImages;
+        return this.imagesData;
     }
 
-    private getAllImageItems(itemsData) {
+    private collectImagesData(itemsData) {
         let allImages = [];
         let i = 0;
         
@@ -69,10 +69,9 @@ export class ItemsDataService {
             }
         }
 
-        this.slidesImages = allImages;
+        this.imagesData = allImages;
 
-        return this.slidesImages;
+        return this.imagesData;
     }
-
 
 }

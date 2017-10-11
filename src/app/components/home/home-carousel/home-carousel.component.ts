@@ -1,8 +1,4 @@
-import {
-    Component,
-    OnInit,
-    ViewChild
-} from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
   
 import { ItemsDataService } from '../../../service/items-data.service';
 import { HomeSliderService } from '../../../service/home-slider.service';
@@ -22,11 +18,8 @@ export class HomeCarouselComponent implements OnInit {
 
     @ViewChild('usefulSwiper') usefulSwiper: any;
 
-    public numberOfSlides: number;
-    
     public randomImagesPerSlide: Array<number> = [];
     public randomImagesPerSlideHelper: Array<number> = [];
-    public totalImagesForSlides: number;
 
     public images: Array<any> = [];
 
@@ -48,20 +41,14 @@ export class HomeCarouselComponent implements OnInit {
     ) {}
   
     public ngOnInit() {
-
-        this.numberOfSlides = this._homeSliderService.getNumberOfSlides();
         this.randomImagesPerSlide = this._homeSliderService.getRandomImagesPerSlide();
         this.randomImagesPerSlideHelper = this._homeSliderService.getRandomImagesPerSlideHelper();
-        this.totalImagesForSlides = this._homeSliderService.getTotalImagesForSlides();
 
         this._itemsDataService.getItemsData()
             .subscribe((itemsData) => {
-                let imagesArray = this._itemsDataService.getSlidesImages(itemsData);
-                this.images = this._homeSliderService.collectRandomImages(imagesArray);
-
-                console.log(this.images);
+                let imagesArray = this._itemsDataService.getImagesData(itemsData);
+                this.images = this._homeSliderService.getRandomImages(imagesArray);
             });
-      
     }
 
     public toggleOnOffClick(event) {

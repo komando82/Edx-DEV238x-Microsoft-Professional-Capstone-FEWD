@@ -1,0 +1,64 @@
+<div class="container shop-all">
+    <div class="row controll">
+        <div class="col-md-6">
+            <div *ngIf="subcategoryImages.length !== 0">
+                Showing <strong>{{ subcategoryImages.length }}</strong> of {{ allSubcategoryImagesNum }} items in <strong>{{ activeSubcategory }}</strong>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <form class="form-inline text-right">
+                <label class="custom-control custom-checkbox mb-2 mr-sm-2 mb-sm-0">
+                    <input type="checkbox" class="custom-control-input" [checked]="inStockOnly" (click)='inStockOnlyClick($event)'>
+                    <span class="custom-control-description">In Stock Only </span>
+                    <span class="custom-control-indicator"></span>
+                </label>
+                <label class="mr-sm-2" for="inlineFormCustomSelect">Sort by: </label>
+                <select class="custom-select mb-2 mr-sm-2 mb-sm-0" id="inlineFormCustomSelect" (change)="onChangeSortSelect($event.target.value)">
+                    <option value="0" selected>None</option>
+                    <option value="1">Price</option>
+                    <option value="2">Alphabetical</option>
+                    <option value="3">Rating</option>
+                </select>
+            </form>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-3">
+            <div *ngIf="categoriesData.length !== 0">
+                <ul class="category-ul">
+                    <li *ngFor="let categories of categoriesData; let i=index">
+                        <button (click)='categoryClick($event, i)'>{{ categories.category }}</button>
+                        <ul *ngIf="categories.subcategories.length !== 0" [ngClass]="{'active': categories.active}">
+                            <li *ngFor="let subcategories of categories.subcategories; let j=index">
+                                <button (click)='subcategoryClick($event, subcategories)' [ngClass]="{'actual': subcategories === activeSubcategory}">{{ subcategories }}</button>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-md-9" *ngIf="subcategoryImages.length !== 0">
+            <div class="row show-all-images">
+                <div *ngFor="let subcategoryImage of subcategoryImages; let i=index" class="col-md-3 image-box">
+                    <div class="row">
+                        <div class="col-md-8 product-name">
+                            {{ subcategoryImage.name }}
+                        </div>
+                        <div class="col-md-4 text-right product-price">
+                            ${{ subcategoryImage.price }}
+                        </div>
+                    </div>
+                    <div class="image-container text-center">
+                        <a routerLink = "/product/{{ subcategoryImage.id }}">
+                            <!--<img [src]="subcategoryImage.imagelink" alt="">-->
+                            <img alt="" src="/assets/img/pexels-photo-346726-1.jpg">
+                        </a>
+                    </div>
+                    <div class="text-right add">
+                        <button class="btn btn-default" (click)='addToCartClick($event, subcategoryImage.id)'>Add</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

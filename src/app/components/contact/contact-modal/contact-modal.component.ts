@@ -20,13 +20,11 @@ export class ContactModalComponent {
 
   public closeModalClick(event) {
     event.stopPropagation();
-    // this.openModal = false;
     this.onCloseModal.emit(true);
   }
 
   public doNothing(event) {
     event.stopPropagation();
-    console.log('Nothing');
   }
 
 }

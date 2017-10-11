@@ -3,7 +3,9 @@ import { HomeComponent } from './components/home';
 import { AboutComponent } from './components/about';
 import { ContactComponent } from './components/contact';
 import { ProductComponent } from './components/product';
-import { NoContentComponent } from './no-content';
+import { ShopAllComponent } from './components/shop-all';
+import { CartComponent } from './components/cart';
+import { NoContentComponent } from './components/no-content';
 
 import { DataResolver } from './app.resolver';
 
@@ -13,5 +15,7 @@ export const ROUTES: Routes = [
   { path: 'about', component: AboutComponent },
   { path: 'contact', component: ContactComponent },
   { path: 'product/:id', component: ProductComponent },
+  { path: 'shop', component: ShopAllComponent },
+  { path: 'cart', component: CartComponent },
   { path: '**',    component: NoContentComponent },
 ];

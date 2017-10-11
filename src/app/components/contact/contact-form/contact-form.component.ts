@@ -37,8 +37,6 @@ export class ContactFormComponent {
 
   public onSubmitFormClick(event) {
     if (this.validation()) {
-      // this.form.reset();
-
       this.onSubmitForm.emit(
           {
               name: this.name,

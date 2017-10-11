@@ -1,8 +1,4 @@
-import {
-  Component,
-} from '@angular/core';
-
-import { ItemsDataService } from '../../service/items-data.service';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'home',

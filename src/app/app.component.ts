@@ -9,7 +9,8 @@ import {
 import { AppState } from './app.service';
 import { ItemsDataService } from './service/items-data.service';
 import { HomeSliderService } from './service/home-slider.service';
-import { ProductService } from './service/product.service';
+import { ShopAllService } from './service/shop-all.service';
+import { CartService } from './service/cart.service';
 
 /**
  * App Component
@@ -25,7 +26,8 @@ import { ProductService } from './service/product.service';
   providers: [
     ItemsDataService,
     HomeSliderService,
-    ProductService
+    ShopAllService,
+    CartService
   ]
 })
 export class AppComponent implements OnInit {

@@ -7,20 +7,13 @@ export class HomeSliderService {
 
     private randomImagesPerSlide: Array<number> = [];
     private randomImagesPerSlideHelper: Array<number> = [];
-    private totalImagesForSlides: number;
+    private totalSlidesImages: number;
 
     private randomImagesIndexes: Array<number>  = [];
     private slidesImages: Array<any>  = [];
 
     constructor() {
         this.generateRandomImagesPerSlide();
-
-        console.log(this.randomImagesPerSlide);
-        console.log(this.randomImagesPerSlideHelper);
-    }
-
-    public getNumberOfSlides() {
-        return this.numberOfSlides;
     }
 
     public getRandomImagesPerSlide() {
@@ -31,45 +24,37 @@ export class HomeSliderService {
         return this.randomImagesPerSlideHelper;
     }
 
-    public getTotalImagesForSlides() {
-        return this.totalImagesForSlides;
-    }
-
-    public getRandomImagesIndexesProp() {
-        return this.randomImagesIndexes;
-    }
-
-    public collectRandomImages(imagesArray) {
+    public getRandomImages(imagesArray) {
         if (this.slidesImages.length !== 0) {
             return this.slidesImages;
         }
 
         if (this.randomImagesIndexes.length === 0) {
-            this.randomImagesIndexes = this.getRandomImagesIndexes(imagesArray.length, this.totalImagesForSlides);
+            this.randomImagesIndexes = this.collectRandomImagesIndexes(imagesArray.length, this.totalSlidesImages);
         }
 
-        this.slidesImages = this.getRandomImages(this.randomImagesIndexes, imagesArray);
+        this.slidesImages = this.collectRandomImages(this.randomImagesIndexes, imagesArray);
 
         return this.slidesImages;
     }
 
     private generateRandomImagesPerSlide() {
         if (this.randomImagesPerSlide.length === 0) {
-            this.totalImagesForSlides = 0;
+            this.totalSlidesImages = 0;
             
             for (let i=0; i<this.numberOfSlides; i++) {
-                this.randomImagesPerSlideHelper.push(this.totalImagesForSlides);
+                this.randomImagesPerSlideHelper.push(this.totalSlidesImages);
 
                 let rand = Math.floor((Math.random() * 4) + 1);
 
                 this.randomImagesPerSlide.push(rand);
 
-                this.totalImagesForSlides += rand;
+                this.totalSlidesImages += rand;
             }
         }
     }
 
-    private getRandomImagesIndexes(imagesArrayLength, requiredImagesNum) {
+    private collectRandomImagesIndexes(imagesArrayLength, requiredImagesNum) {
         let randomImagesIndexes = [];
 
         while(randomImagesIndexes.length < requiredImagesNum) {
@@ -83,7 +68,7 @@ export class HomeSliderService {
         return randomImagesIndexes;
     }
 
-    private getRandomImages(randomImagesIndexArray, imagesArray) {
+    private collectRandomImages(randomImagesIndexArray, imagesArray) {
         let slidesImages = [];
 
         for (let index in randomImagesIndexArray) {

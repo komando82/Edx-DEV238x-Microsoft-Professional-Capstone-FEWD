@@ -1,7 +1,6 @@
 import {
   Component
 } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'about',
@@ -9,9 +8,5 @@ import { ActivatedRoute } from '@angular/router';
   templateUrl: './about.component.html'
 })
 export class AboutComponent {
-
-  constructor(
-    public route: ActivatedRoute
-  ) {}
 
 }

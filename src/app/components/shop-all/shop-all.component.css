@@ -1,0 +1,116 @@
+.controll {
+    margin-bottom: 20px;
+    padding: 20px 0;
+}
+
+.shop-all {
+    padding: 150px 0;
+}
+
+.shop-all ul {
+    list-style: none;
+    margin: 0;
+}
+
+.shop-all ul ul {
+    max-height: 0;
+    visibility: hidden;
+    opacity: 0;
+    transition: max-height 0.5s ease-out, opacity 0.5s ease-out, visibility 0.5s;
+}
+
+.shop-all ul ul.active {
+    max-height: 500px;
+    visibility: visible;
+    opacity: 1;
+    transition: max-height 0.5s ease-out, opacity 0.5s ease-out, visibility 0.5s;
+}
+
+.shop-all ul button {
+    border: 0;
+    background: none;
+    color: #007bff;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: bold;
+    outline: 0;
+}
+
+.shop-all ul button:hover {
+    color: #3A6FA3;
+}
+
+.category-ul {
+    padding-left: 0;
+}
+
+.shop-all ul button.actual {
+    color: #d9534f;
+}
+
+.show-all-images img {
+    display: block;
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.image-box {
+    margin-bottom: 50px;
+}
+
+.image-container {
+    height: 200px;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    line-height: 200px;
+    vertical-align: middle;
+}
+
+.image-container a {
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+}
+
+.image-container img {
+    display: inline-block;
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.product-name {
+    color: #007bff;
+    min-height: 50px;
+}
+
+.product-name,
+.product-price {
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.add {
+    margin-top: 15px;
+}
+
+.add button {
+    cursor: pointer;
+}
+
+.custom-control-indicator,
+.custom-control-indicator:hover,
+.custom-control-indicator:active,
+.custom-control-indicator:visited,
+.custom-control-indicator:focus {
+    outline: 0;
+    border: 0;
+    border-radius: 0;
+    margin: 0 0.5rem;
+}
+
+.shop-all .custom-select {
+    background-image: none;
+}
+
+.custom-checkbox {
+    margin-left: auto;
+}

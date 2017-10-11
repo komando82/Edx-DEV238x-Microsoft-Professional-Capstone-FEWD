@@ -28,8 +28,8 @@ import { ROUTES } from './app.routes';
 import { AppComponent } from './app.component';
 import { APP_RESOLVER_PROVIDERS } from './app.resolver';
 import { AppState, InternalStateType } from './app.service';
-import { HeaderNavComponent } from './header-nav';
-import { FooterNavComponent } from './footer-nav';
+import { HeaderNavComponent } from './components/header-nav';
+import { FooterNavComponent } from './components/footer-nav';
 import { HomeComponent } from './components/home';
 import { HomeCarouselComponent } from './components/home/home-carousel';
 import { AboutComponent } from './components/about';
@@ -37,7 +37,9 @@ import { ContactComponent } from './components/contact';
 import { ContactFormComponent } from './components/contact/contact-form';
 import { ContactModalComponent } from './components/contact/contact-modal';
 import { ProductComponent } from './components/product';
-import { NoContentComponent } from './no-content';
+import { ShopAllComponent } from './components/shop-all';
+import { CartComponent } from './components/cart';
+import { NoContentComponent } from './components/no-content';
 
 import '../styles/bootstrap.scss';
 import '../styles/styles.scss';
@@ -70,6 +72,8 @@ type StoreType = {
     HomeComponent,
     HomeCarouselComponent,
     ProductComponent,
+    ShopAllComponent,
+    CartComponent,
     NoContentComponent,
     Parallax
   ],
