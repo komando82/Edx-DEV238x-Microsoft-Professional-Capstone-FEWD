@@ -1,5 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+
+import { CartService } from '../../service/cart.service';
 
 @Component({
   selector: 'header-nav',
@@ -7,8 +9,17 @@ import { ActivatedRoute } from '@angular/router';
   templateUrl: './header-nav.component.html'
 })
 
-export class HeaderNavComponent {
+export class HeaderNavComponent implements OnInit {
 
-  constructor(public route: ActivatedRoute) {}
+  public cartProductIndexes: Array<any>;
+
+  constructor(
+    public route: ActivatedRoute,
+    private _cartService: CartService
+  ) {}
+
+  public ngOnInit() {
+    this.cartProductIndexes = this._cartService.getCartProductIndexes();
+  }
 
 }

@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import {Location} from '@angular/common';
 
 import { ItemsDataService } from '../../service/items-data.service';
+import { CartService } from '../../service/cart.service';
 
 @Component({
   selector: 'product',
@@ -14,17 +15,20 @@ export class ProductComponent implements OnInit {
     public product: any;
     public productQty: number = 1;
 
+    protected id: number;
+
     constructor(
       private _Activatedroute:ActivatedRoute,
       private _itemsDataService: ItemsDataService,
       private _router: Router,
-      private _location: Location
+      private _location: Location,
+      private _cartService: CartService
     ){}
 
     public ngOnInit() {
-      let id = parseInt(this._Activatedroute.snapshot.params['id']);
+      this.id = parseInt(this._Activatedroute.snapshot.params['id']);
 
-      if (isNaN(id)) {
+      if (isNaN(this.id)) {
         this._router.navigate(['/']);
       }
 
@@ -32,11 +36,11 @@ export class ProductComponent implements OnInit {
           .subscribe((itemsData) => {
               let imagesArray = this._itemsDataService.getImagesData(itemsData);
 
-              if (id < 0 || id >= imagesArray.length) {
+              if (this.id < 0 || this.id >= imagesArray.length) {
                 this._router.navigate(['/']);
               }
 
-              this.product = imagesArray[id];
+              this.product = imagesArray[this.id];
           });
     }
 
@@ -45,7 +49,7 @@ export class ProductComponent implements OnInit {
     }
 
     public onAddProductToCartClick(event) {
-      console.log('click Add');
+      this._cartService.addCartProductIndexes(this.id, this.productQty);
     }
 
 }

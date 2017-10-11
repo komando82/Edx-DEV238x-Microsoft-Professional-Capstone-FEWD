@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { ItemsDataService } from '../../service/items-data.service';
 import { ShopAllService } from '../../service/shop-all.service';
+import { CartService } from '../../service/cart.service';
 
 @Component({
   selector: 'shop-all',
@@ -21,7 +22,8 @@ export class ShopAllComponent implements OnInit  {
 
   constructor(
     private _itemsDataService: ItemsDataService,
-    private _shopAllService: ShopAllService
+    private _shopAllService: ShopAllService,
+    private _cartService: CartService
   ){}
 
   public ngOnInit() {
@@ -58,6 +60,7 @@ export class ShopAllComponent implements OnInit  {
 
   public addToCartClick(event, id) {
     console.log(id);
+    this._cartService.addCartProductIndexes(id, 1);
   }
 
   public inStockOnlyClick(event) {

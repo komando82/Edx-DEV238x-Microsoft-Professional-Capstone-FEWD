@@ -19,6 +19,9 @@
           <li class="nav-item">
             <a class="nav-link" [routerLink]=" ['./cart'] "
               routerLinkActive="active" [routerLinkActiveOptions]= "{exact: true}">
+              <span class="badge" *ngIf="cartProductIndexes.length > 0">
+                {{ cartProductIndexes.length }}
+              </span>
               <i class="fa fa-shopping-cart" aria-hidden="true"></i> Cart
             </a>
           </li>
