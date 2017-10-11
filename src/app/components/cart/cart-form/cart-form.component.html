@@ -1,0 +1,75 @@
+<form [formGroup]="form" class="cart-form">
+        
+    <div class="form-group">
+        <input type="text" [(ngModel)]='name' class="form-control" id="name" formControlName="nameControl" placeholder="Name" [ngClass]="{
+            'is-valid': !form.controls['nameControl'].invalid && (form.controls['nameControl'].dirty || form.controls['nameControl'].touched),
+            'is-invalid': form.controls['nameControl'].invalid && (form.controls['nameControl'].dirty || form.controls['nameControl'].touched)
+            }">
+    </div>
+    <div class="form-group">
+        <input type="text" [(ngModel)]='address' class="form-control" id="address" formControlName="addressControl" placeholder="Address" [ngClass]="{
+            'is-valid': !form.controls['addressControl'].invalid && (form.controls['addressControl'].dirty || form.controls['addressControl'].touched),
+            'is-invalid': form.controls['addressControl'].invalid && (form.controls['addressControl'].dirty || form.controls['addressControl'].touched)
+            }">
+    </div>
+    <div class="form-group">
+        <input type="text" [(ngModel)]='city' class="form-control" id="city" formControlName="cityControl" placeholder="City" [ngClass]="{
+            'is-valid': !form.controls['cityControl'].invalid && (form.controls['cityControl'].dirty || form.controls['cityControl'].touched),
+            'is-invalid': form.controls['cityControl'].invalid && (form.controls['cityControl'].dirty || form.controls['cityControl'].touched)
+            }">
+    </div>
+    <div class="form-group">
+        <input type="text" [(ngModel)]='phone' class="form-control" id="phone" formControlName="phoneControl" placeholder="Phone Number" [ngClass]="{
+            'is-valid': !form.controls['phoneControl'].invalid && (form.controls['phoneControl'].dirty || form.controls['phoneControl'].touched),
+            'is-invalid': form.controls['phoneControl'].invalid && (form.controls['phoneControl'].dirty || form.controls['phoneControl'].touched)
+            }">
+    </div>
+
+    <div class="form-group">
+        <div class='errorMessage'>
+
+            <div *ngIf="!form.controls['nameControl'].valid && (form.controls['nameControl'].dirty || form.controls['nameControl'].touched)">
+                <div [hidden]="!form.controls['nameControl'].hasError('required')">
+                    * Name is required.
+                </div>
+                <div [hidden]="!form.controls['nameControl'].hasError('minlength')">
+                    * Name must be at least 3 characters long.
+                </div>
+            </div>
+
+            <div *ngIf="!form.controls['addressControl'].valid && (form.controls['addressControl'].dirty || form.controls['addressControl'].touched) &&
+                        (form.controls['nameControl'].valid || !form.controls['nameControl'].touched)">
+                <div [hidden]="!form.controls['addressControl'].hasError('required')">
+                    * Address is required.
+                </div>
+                <div [hidden]="!form.controls['addressControl'].hasError('minlength')">
+                    * Address must be at least 3 characters long.
+                </div>
+            </div>
+
+            <div *ngIf="!form.controls['cityControl'].valid && (form.controls['cityControl'].dirty || form.controls['cityControl'].touched) &&
+                        (form.controls['nameControl'].valid || !form.controls['nameControl'].touched) &&
+                        (form.controls['addressControl'].valid || !form.controls['addressControl'].touched)">
+                <div [hidden]="!form.controls['cityControl'].hasError('required')">
+                    * City is required.
+                </div>
+            </div>
+
+            <div *ngIf="!form.controls['phoneControl'].valid && (form.controls['phoneControl'].dirty || form.controls['phoneControl'].touched) &&
+            (form.controls['nameControl'].valid || !form.controls['nameControl'].touched) &&
+            (form.controls['addressControl'].valid || !form.controls['addressControl'].touched) &&
+            (form.controls['cityControl'].valid || !form.controls['cityControl'].touched)">
+                <div [hidden]="!form.controls['phoneControl'].hasError('required')">
+                    * Phone Number is required.
+                </div>
+                <div [hidden]="!form.controls['phoneControl'].hasError('minlength')">
+                    * Phone Number must be at least 8 characters long.
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <button [disabled]="!form.valid" (click)='onCheckoutFormClick($event)' type="submit" class="btn btn-primary btn-lg submit">Checkout</button>
+
+</form>

@@ -26,4 +26,8 @@ export class CartService {
         return this.cartProductIndexes;
     }
 
+    public getCartProductQuantities() {
+        return this.cartProductQuantities;
+    }
+
 }

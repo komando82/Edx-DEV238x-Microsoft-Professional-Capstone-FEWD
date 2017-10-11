@@ -1,3 +1,39 @@
-<div class="container">
-    CART
+<div class="container cart">
+    <div class="row" *ngIf="cartProductIndexes.length === 0">
+        <h2>Cart Is Empty</h2>
+    </div>
+    <div class="row" *ngIf="cartProductIndexes.length > 0">
+        <div class="col-md-6">
+            <table class="table table-responsive">
+                <tr class="row">
+                    <th class="col-md-2">Image</th>
+                    <th class="col-md-2">Name</th>
+                    <th class="col-md-2">Price</th>
+                    <th class="col-md-2">Qty</th>
+                    <th class="col-md-2">Cost</th>
+                    <th class="col-md-2">Remove</th>
+                </tr>
+                <tr *ngFor="let productIndex of cartProductIndexes; let i=index" class="row">
+                    <td class="col-md-2"><img [src]="imagesData[productIndex].imagelink" alt=""></td>
+                    <td class="col-md-2">{{ imagesData[productIndex].name }}</td>
+                    <td class="col-md-2">{{ imagesData[productIndex].price }}</td>
+                    <td class="col-md-2"><input type="number" [(ngModel)]="cartProductQuantities[i]" value="{{ cartProductQuantities[i] }}" min="1" max="100"></td>
+                    <td class="col-md-2">${{ (imagesData[productIndex].price * cartProductQuantities[i]) }}</td>
+                    <td class="col-md-2"><button class="btn btn-default" (change)='onRemoveCartItemClick($event, productIndex)'>X</button></td>
+                </tr>
+            </table>
+        </div>
+        <div class="col-md-6">
+            <div class="row">
+                <div class="col-md-12">
+                    <h2>Enter Shipping Details</h2>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <cart-form></cart-form>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

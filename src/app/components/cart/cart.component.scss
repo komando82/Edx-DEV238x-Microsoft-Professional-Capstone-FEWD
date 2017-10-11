@@ -1,0 +1,23 @@
+.cart {
+    padding: 150px 0;
+    img {
+        display: inline-block;
+        max-height: 50px;
+        max-width: 100%;
+    }
+
+    table {
+        tr {
+            height: 64px;
+            td {
+                padding: 0.5rem;
+            }
+        }
+        button {
+            cursor: pointer;
+        }
+        input {
+            width: 50px;
+        }
+    }
+}

@@ -1,0 +1,14 @@
+.cart-form {
+    .submit {
+        cursor: pointer;
+        &:disabled {
+            cursor: not-allowed;
+        }
+    }
+}
+
+.errorMessage {
+    height: 30px;
+    line-height: 26px;
+    color: #dc3545;
+}

@@ -9,7 +9,7 @@ import { CartService } from '../../service/cart.service';
   styleUrls: ['./shop-all.component.scss'],
   templateUrl: './shop-all.component.html'
 })
-export class ShopAllComponent implements OnInit  {
+export class ShopAllComponent implements OnInit {
 
   public categoriesData: Array<any> = [];
   public activeSubcategory: string = 'Baby Care';
