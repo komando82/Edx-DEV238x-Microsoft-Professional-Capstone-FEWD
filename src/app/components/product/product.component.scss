@@ -8,6 +8,9 @@
 
 .product-container button {
     cursor: pointer;
+    &:disabled {
+        cursor: not-allowed;
+    }
 }
 
 .product-container img {

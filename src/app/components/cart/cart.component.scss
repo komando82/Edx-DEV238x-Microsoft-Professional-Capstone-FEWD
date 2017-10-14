@@ -19,5 +19,10 @@
         input {
             width: 50px;
         }
+        .is-invalid,
+        .is-invalid:focus {
+            border-color: #dc3545;
+            outline: 0;
+        }
     }
 }

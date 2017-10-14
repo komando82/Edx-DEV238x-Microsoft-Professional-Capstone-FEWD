@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import {Location} from '@angular/common';
+import { Location, CurrencyPipe } from '@angular/common';
 
 import { ItemsDataService } from '../../service/items-data.service';
 import { CartService } from '../../service/cart.service';

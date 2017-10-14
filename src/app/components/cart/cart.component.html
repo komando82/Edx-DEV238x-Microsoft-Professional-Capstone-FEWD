@@ -1,8 +1,8 @@
 <div class="container cart">
-    <div class="row" *ngIf="cartProductIndexes.length === 0">
+    <div class="row" *ngIf="cartProductArray.length === 0">
         <h2>Cart Is Empty</h2>
     </div>
-    <div class="row" *ngIf="cartProductIndexes.length > 0">
+    <div class="row" *ngIf="cartProductArray.length > 0">
         <div class="col-md-6">
             <table class="table table-responsive">
                 <tr class="row">
@@ -10,18 +10,36 @@
                     <th class="col-md-2">Name</th>
                     <th class="col-md-2">Price</th>
                     <th class="col-md-2">Qty</th>
-                    <th class="col-md-2">Cost</th>
-                    <th class="col-md-2">Remove</th>
+                    <th class="col-md-2">{{ element }}</th>
+                    <th class="col-md-2"><input
+                        type="number"
+                        (input)="onChange($event.target.value)"
+                        value="{{ element }}"
+                        /></th>
                 </tr>
-                <tr *ngFor="let productIndex of cartProductIndexes; let i=index" class="row">
-                    <td class="col-md-2"><img [src]="imagesData[productIndex].imagelink" alt=""></td>
-                    <td class="col-md-2">{{ imagesData[productIndex].name }}</td>
-                    <td class="col-md-2">{{ imagesData[productIndex].price }}</td>
-                    <td class="col-md-2"><input type="number" [(ngModel)]="cartProductQuantities[i]" value="{{ cartProductQuantities[i] }}" min="1" max="100"></td>
-                    <td class="col-md-2">${{ (imagesData[productIndex].price * cartProductQuantities[i]) }}</td>
-                    <td class="col-md-2"><button class="btn btn-default" (change)='onRemoveCartItemClick($event, productIndex)'>X</button></td>
+                <tr *ngFor="let productData of cartProductArray; let i=index" class="row">
+                    <td class="col-md-2"><img [src]="imagesData[productData.productId].imagelink" alt=""></td>
+                    <td class="col-md-2">{{ imagesData[productData.productId].name }}</td>
+                    <td class="col-md-2">{{ imagesData[productData.productId].price }}</td>
+                    <td class="col-md-2"><input type="number" [(ngModel)]="productData.productQty" value="{{ productData.productQty }}" min="1" max="100" [ngClass]="{
+                        'is-invalid': productData.productQty < 1
+                        }"></td>
+                    <td class="col-md-2">${{ (imagesData[productData.productId].price * productData.productQty) }}</td>
+                    <td class="col-md-2"><button class="btn btn-default" (click)='onRemoveCartItemClick($event, i)'>X</button></td>
                 </tr>
             </table>
+            <div>
+                Subtotal: ${{ getSubTotal() | number : '1.2-2' }}
+            </div>
+            <div>
+                Shipping: FREE
+            </div>
+            <div>
+                Tax ({{ tax * 100 }}%): ${{ subTotal * tax | number : '1.2-2' }}
+            </div>
+            <div>
+                Total: ${{ subTotal - (subTotal * tax) | number : '1.2-2' }}
+            </div>
         </div>
         <div class="col-md-6">
             <div class="row">

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CurrencyPipe } from '@angular/common';
 
 import { ItemsDataService } from '../../service/items-data.service';
 import { ShopAllService } from '../../service/shop-all.service';

@@ -45,7 +45,7 @@
                             {{ subcategoryImage.name }}
                         </div>
                         <div class="col-md-4 text-right product-price">
-                            ${{ subcategoryImage.price }}
+                            {{ subcategoryImage.price | currency: 'USD':true }}
                         </div>
                     </div>
                     <div class="image-container text-center">
@@ -55,7 +55,8 @@
                         </a>
                     </div>
                     <div class="text-right add">
-                        <button class="btn btn-default" (click)='addToCartClick($event, subcategoryImage.id)'>Add</button>
+                        <span *ngIf="subcategoryImage.stock < 1" class="out-of-stock">* Out of Stock</span>
+                        <button [disabled]="subcategoryImage.stock < 1" class="btn btn-default" (click)='addToCartClick($event, subcategoryImage.id)'>Add</button>
                     </div>
                 </div>
             </div>

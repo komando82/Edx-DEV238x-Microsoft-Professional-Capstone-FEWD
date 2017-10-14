@@ -30,4 +30,23 @@ export class CartService {
         return this.cartProductQuantities;
     }
 
+    public removeProductFromCart(productIndex) {
+        console.log(this.cartProductIndexes);
+
+        let check = this.cartProductIndexes.indexOf(productIndex);
+        console.log(check);
+
+        if (check > -1) {
+            let test1 = this.cartProductIndexes.splice(check,1);
+            // console.log('A ' + test1);
+            this.cartProductQuantities.splice(productIndex,1);
+        }
+
+        console.log(this.cartProductIndexes);
+    }
+
+    public setQty() {
+        console.log('A');
+    }
+
 }
