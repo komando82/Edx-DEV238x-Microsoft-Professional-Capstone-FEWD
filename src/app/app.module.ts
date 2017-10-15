@@ -113,7 +113,7 @@ export class AppModule {
     if (!store || !store.state) {
       return;
     }
-    console.log('HMR store', JSON.stringify(store, null, 2));
+    // console.log('HMR store', JSON.stringify(store, null, 2));
     /**
      * Set state
      */
