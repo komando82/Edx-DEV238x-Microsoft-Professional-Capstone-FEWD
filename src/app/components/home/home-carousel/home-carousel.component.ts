@@ -31,7 +31,7 @@ export class HomeCarouselComponent implements OnInit {
         nextButton: '.swiper-button-next',
         prevButton: '.swiper-button-prev',
         spaceBetween: 30,
-        autoplay: 1000,
+        autoplay: 3000,
         loop: true,
     };
 
