@@ -60,7 +60,6 @@ export class ShopAllComponent implements OnInit {
   }
 
   public addToCartClick(event, id) {
-    console.log(id);
     this._cartService.addCartProductIndexes(id, 1);
   }
 
