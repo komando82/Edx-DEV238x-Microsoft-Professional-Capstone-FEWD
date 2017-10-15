@@ -16,10 +16,6 @@ export class CartService {
             this.cartProductIndexes.push(index);
             this.cartProductQuantities.push(qty);
         }
-
-        console.log(this.cartProductIndexes);
-        console.log(this.cartProductQuantities);
-
     }
 
     public getCartProductIndexes() {
@@ -31,22 +27,17 @@ export class CartService {
     }
 
     public removeProductFromCart(productIndex) {
-        console.log(this.cartProductIndexes);
-
         let check = this.cartProductIndexes.indexOf(productIndex);
-        console.log(check);
 
         if (check > -1) {
-            let test1 = this.cartProductIndexes.splice(check,1);
-            // console.log('A ' + test1);
-            this.cartProductQuantities.splice(productIndex,1);
+            this.cartProductIndexes.splice(check, 1);
+            this.cartProductQuantities.splice(check,1);
         }
-
-        console.log(this.cartProductIndexes);
     }
 
-    public setQty() {
-        console.log('A');
+    public setQtyForProductId(productId, productQty) {
+        let check = this.cartProductIndexes.indexOf(productId);
+        this.cartProductQuantities[check] = productQty;
     }
 
 }

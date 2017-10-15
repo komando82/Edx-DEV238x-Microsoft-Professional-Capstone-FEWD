@@ -1,8 +1,9 @@
-import { Component, Inject } from '@angular/core';
+import { Component, Inject, Input, Output, EventEmitter } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { CurrencyPipe } from '@angular/common';
 
-import { ItemsDataService } from '../../service/items-data.service';
-import { CartService } from '../../service/cart.service';
+import { ItemsDataService } from '../../../service/items-data.service';
+import { CartService } from '../../../service/cart.service';
 
 @Component({
   selector: 'cart-form',
@@ -17,7 +18,11 @@ export class CartFormComponent {
   public city: string;
   public phone: string;
 
-  constructor(@Inject(FormBuilder) fb: FormBuilder) {
+  @Input() public validQty: boolean;
+
+  constructor(
+    @Inject(FormBuilder) fb: FormBuilder
+  ) {
     this.form = fb.group({
       nameControl: ['', Validators.compose(
         [Validators.required, Validators.minLength(3)]

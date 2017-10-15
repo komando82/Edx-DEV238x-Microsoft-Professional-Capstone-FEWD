@@ -1,4 +1,5 @@
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
+import { CurrencyPipe } from '@angular/common';
 
 import { ItemsDataService } from '../../service/items-data.service';
 import { CartService } from '../../service/cart.service';
@@ -10,9 +11,6 @@ import { CartService } from '../../service/cart.service';
 })
 export class CartComponent implements OnInit {
 
-  public cartProductIndexes: Array<any> = [];
-  public cartProductQuantities: Array<any> = [];
-
   public cartProductArray: Array<any> = [];
 
   public imagesData: Array<any> = [];
@@ -20,7 +18,7 @@ export class CartComponent implements OnInit {
   public subTotal: number = 0;
   public tax: number = 0.1;
 
-  public element:number = 1;
+  public validQty:boolean = true;
 
   constructor(
     private _itemsDataService: ItemsDataService,
@@ -33,51 +31,42 @@ export class CartComponent implements OnInit {
         .subscribe((itemsData) => {
           this.imagesData = this._itemsDataService.getImagesData(itemsData);
 
-          this.cartProductIndexes = this._cartService.getCartProductIndexes();
-          this.cartProductQuantities = this._cartService.getCartProductQuantities();
-
           this.cartProductArray = this.parseProductArrayData(
             this._cartService.getCartProductIndexes(),
             this._cartService.getCartProductQuantities()
           );
-
-          console.log(this.cartProductArray);
         });
   }
 
-  public onChange(event){
+  public onProductQtyChange(inputProductId, inputProductQty){
 
-    this._cartService.setQty();
+    if (inputProductQty > 0) {
+      this._cartService.setQtyForProductId(parseInt(inputProductId), parseInt(inputProductQty));
+    }
 
-    if (parseInt(event) < 1) {
-      console.log('b');
-      this.element = 1; 
+    if(!this.validateQtyInputs()) {
+      this.validQty = false;
     }
     else {
-      this.element = parseInt(event);
+      this.validQty = true;
     }
-    console.log(event);
-
   }
 
   public onRemoveCartItemClick(event, productIndex) {
-    console.log(productIndex);
-    //this.cartProductIndexes.splice(productIndex,1);
-    //this.cartProductQuantities.splice(productIndex,1);
-    //console.log(this.cartProductIndexes);
-    //console.log(this.cartProductQuantities);
     let removeCartProductIndex = this.cartProductArray[productIndex].productId;
-    console.log(removeCartProductIndex);
 
     this.cartProductArray.splice(productIndex,1);
     this._cartService.removeProductFromCart(removeCartProductIndex);
+
+    if(!this.validateQtyInputs()) {
+      this.validQty = false;
+    }
+    else {
+      this.validQty = true;
+    }
   }
 
   public getSubTotal():number{
-    /*console.log('start');
-    console.log(this.cartProductIndexes);
-    console.log(this.cartProductQuantities);
-    console.log('end');*/
     let subtotal = 0;
 
     for (let i in this.cartProductArray) {
@@ -85,15 +74,6 @@ export class CartComponent implements OnInit {
 
       subtotal += this.imagesData[index].price * this.cartProductArray[i].productQty;
     }
-
-    /*for (let i=0; i<this.cartProductIndexes.length; i++) {
-      let index = this.cartProductIndexes[i];
-
-      subtotal += this.imagesData[index].price * this.cartProductQuantities[index];
-      console.log('a');
-      console.log(this.imagesData[index].price);
-      console.log(this.cartProductQuantities[index]);
-    }*/
 
     this.subTotal = subtotal;
 
@@ -111,6 +91,18 @@ export class CartComponent implements OnInit {
     }
 
     return cartProductArray;
+  }
+
+  private validateQtyInputs() {
+    for (let i in this.cartProductArray) {
+      let index = this.cartProductArray[i].productId;
+
+      if (this.cartProductArray[i].productQty < 1) {
+        return false;
+      }
+    }
+
+    return true;
   }
 
 }

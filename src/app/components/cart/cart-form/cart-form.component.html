@@ -70,6 +70,6 @@
         </div>
     </div>
 
-    <button [disabled]="!form.valid" (click)='onCheckoutFormClick($event)' type="submit" class="btn btn-primary btn-lg submit">Checkout</button>
+    <button [disabled]="!form.valid || !validQty" (click)='onCheckoutFormClick($event)' type="submit" class="btn btn-primary btn-lg submit">Checkout</button>
 
 </form>

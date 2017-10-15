@@ -10,35 +10,35 @@
                     <th class="col-md-2">Name</th>
                     <th class="col-md-2">Price</th>
                     <th class="col-md-2">Qty</th>
-                    <th class="col-md-2">{{ element }}</th>
-                    <th class="col-md-2"><input
-                        type="number"
-                        (input)="onChange($event.target.value)"
-                        value="{{ element }}"
-                        /></th>
+                    <th class="col-md-2">Cost</th>
+                    <th class="col-md-2">Remove</th>
                 </tr>
                 <tr *ngFor="let productData of cartProductArray; let i=index" class="row">
                     <td class="col-md-2"><img [src]="imagesData[productData.productId].imagelink" alt=""></td>
                     <td class="col-md-2">{{ imagesData[productData.productId].name }}</td>
-                    <td class="col-md-2">{{ imagesData[productData.productId].price }}</td>
-                    <td class="col-md-2"><input type="number" [(ngModel)]="productData.productQty" value="{{ productData.productQty }}" min="1" max="100" [ngClass]="{
-                        'is-invalid': productData.productQty < 1
+                    <td class="col-md-2">{{ imagesData[productData.productId].price | currency: 'USD':true }}</td>
+                    <td class="col-md-2"><input type="number" [(ngModel)]="productData.productQty" (input)="onProductQtyChange(productData.productId, $event.target.value)" value="{{ productData.productQty }}" min="1" max="{{ imagesData[productData.productId].stock }}" [ngClass]="{
+                        'is-invalid': productData.productQty < 1 || productData.productQty > imagesData[productData.productId].stock
                         }"></td>
-                    <td class="col-md-2">${{ (imagesData[productData.productId].price * productData.productQty) }}</td>
+                    <td class="col-md-2">{{ (imagesData[productData.productId].price * productData.productQty) | currency: 'USD':true }}</td>
                     <td class="col-md-2"><button class="btn btn-default" (click)='onRemoveCartItemClick($event, i)'>X</button></td>
                 </tr>
             </table>
-            <div>
-                Subtotal: ${{ getSubTotal() | number : '1.2-2' }}
+            <div class="row total-box tb-top">
+                <div class="col-md-3"><strong>Subtotal:</strong></div>
+                <div class="col-md-9">{{ getSubTotal() | currency: 'USD':true }}</div>
             </div>
-            <div>
-                Shipping: FREE
+            <div class="row total-box">
+                <div class="col-md-3"><strong>Shipping:</strong></div>
+                <div class="col-md-9">FREE</div>
             </div>
-            <div>
-                Tax ({{ tax * 100 }}%): ${{ subTotal * tax | number : '1.2-2' }}
+            <div class="row total-box">
+                <div class="col-md-3"><strong>Tax ({{ tax * 100 }}%):</strong></div>
+                <div class="col-md-9">{{ subTotal * tax | currency: 'USD':true }}</div>
             </div>
-            <div>
-                Total: ${{ subTotal - (subTotal * tax) | number : '1.2-2' }}
+            <div class="row total-box">
+                <div class="col-md-3"><strong>Total: </strong></div>
+                <div class="col-md-9">{{ subTotal - (subTotal * tax) | currency: 'USD':true }}</div>
             </div>
         </div>
         <div class="col-md-6">
@@ -49,7 +49,9 @@
             </div>
             <div class="row">
                 <div class="col-md-12">
-                    <cart-form></cart-form>
+                    <cart-form
+                        [validQty]="validQty"
+                    ></cart-form>
                 </div>
             </div>
         </div>

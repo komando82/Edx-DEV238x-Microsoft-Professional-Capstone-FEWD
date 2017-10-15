@@ -11,7 +11,7 @@
             <h2>{{ product.name }}</h2>
             <h3>Rating: {{ product.rating }} / 5</h3>
             <p>Stock: {{ product.stock }}</p>
-            <p>${{ product.price }}</p>
+            <p>{{ product.price | currency: 'USD':true }}</p>
             <p><em>{{ product.description }}</em></p>
             <p>Qty: 
                 <input *ngIf="product.stock > 0" [(ngModel)]='productQty' type="number" min="1" max="{{ product.stock }}" value="{{productQty}}">
