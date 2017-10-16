@@ -55,13 +55,13 @@ export class ItemsDataService {
         let allImages = [];
         let i = 0;
 
-        for (let itemD in itemsData) {
+        for (let itemD of Object.keys(itemsData)) {
             let subcategories = itemsData[itemD].subcategories;
 
-            for (let subcategorie in subcategories) {
+            for (let subcategorie of Object.keys(subcategories)) {
                 let items = subcategories[subcategorie].items;
 
-                for (let item in items) {
+                for (let item of Object.keys(items)) {
                     items[item].id = i;
                     allImages.push(items[item]);
 

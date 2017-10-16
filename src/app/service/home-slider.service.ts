@@ -74,7 +74,7 @@ export class HomeSliderService {
     private collectRandomImages(randomImagesIndexArray, imagesArray) {
         let slidesImages = [];
 
-        for (let index in randomImagesIndexArray) {
+        for (let index of Object.keys(randomImagesIndexArray)) {
             slidesImages.push(imagesArray[randomImagesIndexArray[index]]);
         }
 

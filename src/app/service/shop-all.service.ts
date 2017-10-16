@@ -74,12 +74,12 @@ export class ShopAllService {
     private collectCategoriesData(itemsData) {
         let allCategories = [];
 
-        for (let itemIndex in itemsData) {
+        for (let itemIndex of Object.keys(itemsData)) {
             let subcategorieNames = [];
             let category = itemsData[itemIndex].category;
             let subcategories = itemsData[itemIndex].subcategories;
 
-            for (let subcategorieIndex in subcategories) {
+            for (let subcategorieIndex of Object.keys(subcategories)) {
                 subcategorieNames.push(subcategories[subcategorieIndex].name);
             }
 

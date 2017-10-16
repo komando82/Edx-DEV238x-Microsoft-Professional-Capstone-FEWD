@@ -70,7 +70,7 @@ export class CartComponent implements OnInit {
   public getSubTotal(): number {
     let subtotal = 0;
 
-    for (let i in this.cartProductArray) {
+    for (let i of Object.keys(this.cartProductArray)) {
       let index = this.cartProductArray[i].productId;
 
       subtotal += this.imagesData[index].price * this.cartProductArray[i].productQty;
@@ -84,7 +84,7 @@ export class CartComponent implements OnInit {
   private parseProductArrayData(cartProductIndexes, cartProductQuantities) {
     let cartProductArray = [];
 
-    for (let i in cartProductIndexes) {
+    for (let i of Object.keys(cartProductIndexes)) {
       cartProductArray.push({
         productId: cartProductIndexes[i],
         productQty: cartProductQuantities[i]
@@ -95,7 +95,7 @@ export class CartComponent implements OnInit {
   }
 
   private validateQtyInputs() {
-    for (let i in this.cartProductArray) {
+    for (let i of Object.keys(this.cartProductArray)) {
       let index = this.cartProductArray[i].productId;
 
       if (this.cartProductArray[i].productQty < 1) {
