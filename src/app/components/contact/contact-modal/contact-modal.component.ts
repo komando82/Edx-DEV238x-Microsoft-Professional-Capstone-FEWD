@@ -16,8 +16,6 @@ export class ContactModalComponent {
 
   @Output() public onCloseModal = new EventEmitter();
 
-  constructor() {}
-
   public closeModalClick(event) {
     event.stopPropagation();
     this.onCloseModal.emit(true);

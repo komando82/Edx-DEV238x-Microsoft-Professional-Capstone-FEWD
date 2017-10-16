@@ -12,7 +12,7 @@ import { CartService } from '../../../service/cart.service';
 })
 export class CartFormComponent {
   public form: FormGroup;
-  
+
   public name: string;
   public address: string;
   public city: string;
@@ -55,6 +55,5 @@ export class CartFormComponent {
 
     return true;
   }
-
 
 }

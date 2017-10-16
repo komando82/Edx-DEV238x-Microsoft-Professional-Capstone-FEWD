@@ -15,7 +15,7 @@ export const ROUTES: Routes = [
   { path: 'about', component: AboutComponent },
   { path: 'contact', component: ContactComponent },
   { path: 'product/:id', component: ProductComponent },
-  { path: 'shop', component: ShopAllComponent },
+  { path: 'shopping', component: ShopAllComponent },
   { path: 'cart', component: CartComponent },
   { path: '**',    component: NoContentComponent },
 ];

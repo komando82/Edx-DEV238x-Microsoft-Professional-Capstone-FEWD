@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 @Injectable()
 export class ShopAllService {
 
-    private categoriesData: Array<any> = [];
+    private categoriesData: any[] = [];
     private allSubcategoryImagesNum: number = 0;
 
     public getCategoriesData(itemsData) {
@@ -19,13 +19,12 @@ export class ShopAllService {
         this.allSubcategoryImagesNum = 0;
 
         for (let imageIndex in imagesData) {
-            if(imagesData[imageIndex].subcategory === subcategory) {
+            if (imagesData[imageIndex].subcategory === subcategory) {
                 if (inStock) {
-                    if (parseInt(imagesData[imageIndex].stock) > 0) {
+                    if (parseInt(imagesData[imageIndex].stock, 10) > 0) {
                         allSubcategoryImages.push(imagesData[imageIndex]);
                     }
-                }
-                else {
+                } else {
                     allSubcategoryImages.push(imagesData[imageIndex]);
                 }
 
@@ -35,14 +34,11 @@ export class ShopAllService {
 
         if (sort === 0) {
             return allSubcategoryImages;
-        }
-        else if (sort === 1) {
+        } else if (sort === 1) {
             return allSubcategoryImages.sort(this.orderByPrice);
-        }
-        else if (sort === 2) {
+        } else if (sort === 2) {
             return allSubcategoryImages.sort(this.orderByAlphabetical);
-        }
-        else if (sort === 3) {
+        } else if (sort === 3) {
             return allSubcategoryImages.sort(this.orderByRating);
         }
 
@@ -77,7 +73,7 @@ export class ShopAllService {
 
     private collectCategoriesData(itemsData) {
         let allCategories = [];
-        
+
         for (let itemIndex in itemsData) {
             let subcategorieNames = [];
             let category = itemsData[itemIndex].category;
@@ -88,7 +84,7 @@ export class ShopAllService {
             }
 
             allCategories.push({
-                category: category,
+                category,
                 subcategories: subcategorieNames,
                 active: false
             });

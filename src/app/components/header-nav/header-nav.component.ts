@@ -11,7 +11,7 @@ import { CartService } from '../../service/cart.service';
 
 export class HeaderNavComponent implements OnInit {
 
-  public cartProductIndexes: Array<any>;
+  public cartProductIndexes: any[];
 
   constructor(
     public route: ActivatedRoute,

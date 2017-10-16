@@ -3,16 +3,15 @@ import { Injectable } from '@angular/core';
 @Injectable()
 export class CartService {
 
-    protected cartProductIndexes: Array<any> = [];
-    protected cartProductQuantities: Array<any> = [];
-    
+    protected cartProductIndexes: any[] = [];
+    protected cartProductQuantities: any[] = [];
+
     public addCartProductIndexes(index, qty) {
         let check = this.cartProductIndexes.indexOf(index);
 
         if (check > -1) {
             this.cartProductQuantities[check] += qty;
-        }
-        else {
+        } else {
             this.cartProductIndexes.push(index);
             this.cartProductQuantities.push(qty);
         }
@@ -31,7 +30,7 @@ export class CartService {
 
         if (check > -1) {
             this.cartProductIndexes.splice(check, 1);
-            this.cartProductQuantities.splice(check,1);
+            this.cartProductQuantities.splice(check, 1);
         }
     }
 

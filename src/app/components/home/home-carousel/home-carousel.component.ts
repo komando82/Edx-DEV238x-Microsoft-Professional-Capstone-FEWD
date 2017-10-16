@@ -1,27 +1,27 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-  
+
 import { ItemsDataService } from '../../../service/items-data.service';
 import { HomeSliderService } from '../../../service/home-slider.service';
 
 import { SwiperModule } from 'angular2-useful-swiper';
-  
+
 @Component({
     selector: 'home-carousel',
-    styleUrls: [ 
-        './home-carousel.component.scss', 
-        './bootstrap-toggle.min.css',  
+    styleUrls: [
+        './home-carousel.component.scss',
+        './bootstrap-toggle.min.css',
         './swiper.min.css'
     ],
     templateUrl: './home-carousel.component.html'
 })
 export class HomeCarouselComponent implements OnInit {
 
-    @ViewChild('usefulSwiper') usefulSwiper: any;
+    @ViewChild('usefulSwiper') public usefulSwiper: any;
 
-    public randomImagesPerSlide: Array<number> = [];
-    public randomImagesPerSlideHelper: Array<number> = [];
+    public randomImagesPerSlide: any[] = [];
+    public randomImagesPerSlideHelper: any[] = [];
 
-    public images: Array<any> = [];
+    public images: any[] = [];
 
     public toggleOnOff: boolean = true;
 
@@ -39,7 +39,7 @@ export class HomeCarouselComponent implements OnInit {
         private _itemsDataService: ItemsDataService,
         private _homeSliderService: HomeSliderService
     ) {}
-  
+
     public ngOnInit() {
         this.randomImagesPerSlide = this._homeSliderService.getRandomImagesPerSlide();
         this.randomImagesPerSlideHelper = this._homeSliderService.getRandomImagesPerSlideHelper();
@@ -54,19 +54,17 @@ export class HomeCarouselComponent implements OnInit {
     public toggleOnOffClick(event) {
         this.toggleOnOff = !this.toggleOnOff;
 
-        if(this.toggleOnOff) {
+        if (this.toggleOnOff) {
             this.usefulSwiper.swiper.startAutoplay();
-        }
-        else {
+        } else {
             this.usefulSwiper.swiper.stopAutoplay();
         }
     }
 
     public prevNextClick(event) {
-        if(this.toggleOnOff) {
+        if (this.toggleOnOff) {
             this.toggleOnOff = !this.toggleOnOff;
         }
     }
 
 }
-  

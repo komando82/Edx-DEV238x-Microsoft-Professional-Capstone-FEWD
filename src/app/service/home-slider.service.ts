@@ -2,15 +2,15 @@ import { Injectable } from '@angular/core';
 
 @Injectable()
 export class HomeSliderService {
-    
+
     private numberOfSlides: number = 5;
 
-    private randomImagesPerSlide: Array<number> = [];
-    private randomImagesPerSlideHelper: Array<number> = [];
+    private randomImagesPerSlide: number[] = [];
+    private randomImagesPerSlideHelper: number[] = [];
     private totalSlidesImages: number;
 
-    private randomImagesIndexes: Array<number>  = [];
-    private slidesImages: Array<any>  = [];
+    private randomImagesIndexes: number[] = [];
+    private slidesImages: any[]  = [];
 
     constructor() {
         this.generateRandomImagesPerSlide();
@@ -30,7 +30,10 @@ export class HomeSliderService {
         }
 
         if (this.randomImagesIndexes.length === 0) {
-            this.randomImagesIndexes = this.collectRandomImagesIndexes(imagesArray.length, this.totalSlidesImages);
+            this.randomImagesIndexes = this.collectRandomImagesIndexes(
+                imagesArray.length,
+                this.totalSlidesImages
+            );
         }
 
         this.slidesImages = this.collectRandomImages(this.randomImagesIndexes, imagesArray);
@@ -41,8 +44,8 @@ export class HomeSliderService {
     private generateRandomImagesPerSlide() {
         if (this.randomImagesPerSlide.length === 0) {
             this.totalSlidesImages = 0;
-            
-            for (let i=0; i<this.numberOfSlides; i++) {
+
+            for (let i = 0; i < this.numberOfSlides; i++) {
                 this.randomImagesPerSlideHelper.push(this.totalSlidesImages);
 
                 let rand = Math.floor((Math.random() * 4) + 1);
@@ -57,14 +60,14 @@ export class HomeSliderService {
     private collectRandomImagesIndexes(imagesArrayLength, requiredImagesNum) {
         let randomImagesIndexes = [];
 
-        while(randomImagesIndexes.length < requiredImagesNum) {
+        while (randomImagesIndexes.length < requiredImagesNum) {
             let rand = Math.floor((Math.random() * imagesArrayLength));
 
             if (randomImagesIndexes.indexOf(rand) === -1) {
                 randomImagesIndexes.push(rand);
             }
         }
-        
+
         return randomImagesIndexes;
     }
 

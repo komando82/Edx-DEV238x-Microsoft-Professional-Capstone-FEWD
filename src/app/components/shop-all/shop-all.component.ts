@@ -12,20 +12,20 @@ import { CartService } from '../../service/cart.service';
 })
 export class ShopAllComponent implements OnInit {
 
-  public categoriesData: Array<any> = [];
+  public categoriesData: any[] = [];
   public activeSubcategory: string = 'Baby Care';
-  public subcategoryImages: Array<any> = [];
+  public subcategoryImages: any[] = [];
   public inStockOnly: boolean = false;
   public sortByValue: number = 0;
   public allSubcategoryImagesNum: number = 0;
 
-  protected imagesData: Array<any>;
+  protected imagesData: any[];
 
   constructor(
     private _itemsDataService: ItemsDataService,
     private _shopAllService: ShopAllService,
     private _cartService: CartService
-  ){}
+  ) {}
 
   public ngOnInit() {
     this._itemsDataService.getItemsData()
@@ -34,8 +34,8 @@ export class ShopAllComponent implements OnInit {
             this.imagesData = this._itemsDataService.getImagesData(itemsData);
 
             this.subcategoryImages = this._shopAllService.getSubcategoryImagesData(
-              this.imagesData, 
-              this.subcategoryCannedFoodCheck(this.activeSubcategory), 
+              this.imagesData,
+              this.subcategoryCannedFoodCheck(this.activeSubcategory),
               this.inStockOnly,
               this.sortByValue
             );
@@ -51,8 +51,8 @@ export class ShopAllComponent implements OnInit {
     this.activeSubcategory = subcategory;
 
     this.subcategoryImages = this._shopAllService.getSubcategoryImagesData(
-      this.imagesData, 
-      this.subcategoryCannedFoodCheck(this.activeSubcategory), 
+      this.imagesData,
+      this.subcategoryCannedFoodCheck(this.activeSubcategory),
       this.inStockOnly,
       this.sortByValue
     );
@@ -65,10 +65,10 @@ export class ShopAllComponent implements OnInit {
 
   public inStockOnlyClick(event) {
     this.inStockOnly = !this.inStockOnly;
-    
+
     this.subcategoryImages = this._shopAllService.getSubcategoryImagesData(
-      this.imagesData, 
-      this.subcategoryCannedFoodCheck(this.activeSubcategory), 
+      this.imagesData,
+      this.subcategoryCannedFoodCheck(this.activeSubcategory),
       this.inStockOnly,
       this.sortByValue
     );
@@ -76,11 +76,11 @@ export class ShopAllComponent implements OnInit {
   }
 
   public onChangeSortSelect(selectValue) {
-    this.sortByValue = parseInt(selectValue);
+    this.sortByValue = parseInt(selectValue, 10);
 
     this.subcategoryImages = this._shopAllService.getSubcategoryImagesData(
-      this.imagesData, 
-      this.subcategoryCannedFoodCheck(this.activeSubcategory), 
+      this.imagesData,
+      this.subcategoryCannedFoodCheck(this.activeSubcategory),
       this.inStockOnly,
       this.sortByValue
     );
@@ -88,13 +88,13 @@ export class ShopAllComponent implements OnInit {
   }
 
   protected subcategoryCannedFoodCheck(subcategory) {
-    if(subcategory === 'Baby Care') {
+    if (subcategory === 'Baby Care') {
       return 'Baby care';
     }
-    if(subcategory === 'Canned Food') {
+    if (subcategory === 'Canned Food') {
       return 'Canned Goods';
     }
-    if(subcategory === 'Bread and Bakery') {
+    if (subcategory === 'Bread and Bakery') {
       return 'Bread and Bakerye';
     }
 

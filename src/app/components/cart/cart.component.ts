@@ -11,20 +11,20 @@ import { CartService } from '../../service/cart.service';
 })
 export class CartComponent implements OnInit {
 
-  public cartProductArray: Array<any> = [];
+  public cartProductArray: any[] = [];
 
-  public imagesData: Array<any> = [];
+  public imagesData: any[] = [];
 
   public subTotal: number = 0;
   public tax: number = 0.1;
 
-  public validQty:boolean = true;
+  public validQty: boolean = true;
 
   constructor(
     private _itemsDataService: ItemsDataService,
     private _cartService: CartService,
     private cdRef: ChangeDetectorRef
-  ){}
+  ) {}
 
   public ngOnInit() {
     this._itemsDataService.getItemsData()
@@ -38,16 +38,18 @@ export class CartComponent implements OnInit {
         });
   }
 
-  public onProductQtyChange(inputProductId, inputProductQty){
+  public onProductQtyChange (inputProductId, inputProductQty) {
 
     if (inputProductQty > 0) {
-      this._cartService.setQtyForProductId(parseInt(inputProductId), parseInt(inputProductQty));
+      this._cartService.setQtyForProductId(
+        parseInt(inputProductId, 10),
+        parseInt(inputProductQty, 10)
+      );
     }
 
-    if(!this.validateQtyInputs()) {
+    if (!this.validateQtyInputs()) {
       this.validQty = false;
-    }
-    else {
+    } else {
       this.validQty = true;
     }
   }
@@ -55,18 +57,17 @@ export class CartComponent implements OnInit {
   public onRemoveCartItemClick(event, productIndex) {
     let removeCartProductIndex = this.cartProductArray[productIndex].productId;
 
-    this.cartProductArray.splice(productIndex,1);
+    this.cartProductArray.splice(productIndex, 1);
     this._cartService.removeProductFromCart(removeCartProductIndex);
 
-    if(!this.validateQtyInputs()) {
+    if (!this.validateQtyInputs()) {
       this.validQty = false;
-    }
-    else {
+    } else {
       this.validQty = true;
     }
   }
 
-  public getSubTotal():number{
+  public getSubTotal(): number {
     let subtotal = 0;
 
     for (let i in this.cartProductArray) {

@@ -90,7 +90,7 @@ type StoreType = {
     HttpModule,
     SwiperModule,
     RouterModule.forRoot(ROUTES, {
-      useHash: Boolean(history.pushState) === false,
+      useHash: Boolean(history.pushState) === true,
       preloadingStrategy: PreloadAllModules
     })
   ],

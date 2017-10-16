@@ -9,10 +9,11 @@ import 'rxjs/add/observable/throw';
 @Injectable()
 export class ItemsDataService {
 
-    private itemsDataUrl: string = 'https://webmppcapstone.blob.core.windows.net/data/itemsdata.json';
+    private itemsDataUrl: string =
+        'https://webmppcapstone.blob.core.windows.net/data/itemsdata.json';
 
     private itemsData: any;
-    private imagesData: Array<any> = [];
+    private imagesData: any[] = [];
 
     constructor(private _http: Http) {}
 
@@ -21,7 +22,7 @@ export class ItemsDataService {
             'Content-Type': 'application/json'
         });
 
-        return new Observable(observer => {
+        return new Observable((observer) => {
             if (this.itemsData) {
                 observer.next(this.itemsData);
                 return observer.complete();
@@ -39,7 +40,7 @@ export class ItemsDataService {
                     (error) => {
                         console.log(error);
                     });
-        })
+        });
     }
 
     public getImagesData(itemsData) {
@@ -53,9 +54,9 @@ export class ItemsDataService {
     private collectImagesData(itemsData) {
         let allImages = [];
         let i = 0;
-        
-        for (let item in itemsData) {
-            let subcategories = itemsData[item].subcategories;
+
+        for (let itemD in itemsData) {
+            let subcategories = itemsData[itemD].subcategories;
 
             for (let subcategorie in subcategories) {
                 let items = subcategories[subcategorie].items;
@@ -63,7 +64,7 @@ export class ItemsDataService {
                 for (let item in items) {
                     items[item].id = i;
                     allImages.push(items[item]);
-                    
+
                     i++;
                 }
             }

@@ -18,15 +18,15 @@ export class ProductComponent implements OnInit {
     protected id: number;
 
     constructor(
-      private _Activatedroute:ActivatedRoute,
+      private _Activatedroute: ActivatedRoute,
       private _itemsDataService: ItemsDataService,
       private _router: Router,
       private _location: Location,
       private _cartService: CartService
-    ){}
+    ) {}
 
     public ngOnInit() {
-      this.id = parseInt(this._Activatedroute.snapshot.params['id']);
+      this.id = parseInt(this._Activatedroute.snapshot.params['id'], 10);
 
       if (isNaN(this.id)) {
         this._router.navigate(['/']);
