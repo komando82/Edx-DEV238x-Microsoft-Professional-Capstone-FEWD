@@ -1,8 +1,11 @@
-import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef, Renderer2 } from '@angular/core';
 import { CurrencyPipe } from '@angular/common';
 
 import { ItemsDataService } from '../../service/items-data.service';
 import { CartService } from '../../service/cart.service';
+
+import { CartFormComponent } from './cart-form';
+import { CartModalComponent } from './cart-modal';
 
 @Component({
   selector: 'cart',
@@ -12,7 +15,6 @@ import { CartService } from '../../service/cart.service';
 export class CartComponent implements OnInit {
 
   public cartProductArray: any[] = [];
-
   public imagesData: any[] = [];
 
   public subTotal: number = 0;
@@ -20,10 +22,19 @@ export class CartComponent implements OnInit {
 
   public validQty: boolean = true;
 
+  public name: string = '';
+  public address: string = '';
+  public city: string = '';
+  public phone: string = '';
+
+  public resetForm: boolean = false;
+  public openModal: boolean = false;
+
   constructor(
     private _itemsDataService: ItemsDataService,
     private _cartService: CartService,
-    private cdRef: ChangeDetectorRef
+    private cdRef: ChangeDetectorRef,
+    private renderer: Renderer2
   ) {}
 
   public ngOnInit() {
@@ -79,6 +90,27 @@ export class CartComponent implements OnInit {
     this.subTotal = subtotal;
 
     return subtotal;
+  }
+
+  public onCheckoutForm(emitData) {
+    this.openModal = true;
+
+    this.name = emitData.name;
+    this.address = emitData.address;
+    this.city = emitData.city;
+    this.phone = emitData.phone;
+
+    this.renderer.addClass(document.body, 'modal-open');
+  }
+
+  public onCloseModal(emitData) {
+    this.resetForm = emitData;
+    this.openModal = false;
+
+    this.renderer.removeClass(document.body, 'modal-open');
+
+    this._cartService.resetCartData(this.cartProductArray);
+    this.cartProductArray = [];
   }
 
   private parseProductArrayData(cartProductIndexes, cartProductQuantities) {

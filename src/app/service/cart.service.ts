@@ -39,4 +39,10 @@ export class CartService {
         this.cartProductQuantities[check] = productQty;
     }
 
+    public resetCartData(productIndexes) {
+        for (let i of Object.keys(productIndexes)) {
+            this.removeProductFromCart(productIndexes[i].productId);
+        }
+    }
+
 }

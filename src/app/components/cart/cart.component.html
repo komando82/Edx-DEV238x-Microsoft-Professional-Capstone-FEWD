@@ -51,9 +51,21 @@
                 <div class="col-md-12">
                     <cart-form
                         [validQty]="validQty"
+                        (onCheckoutForm)="onCheckoutForm($event)"
                     ></cart-form>
                 </div>
             </div>
         </div>
     </div>
 </div>
+
+<cart-modal
+    [name]="name"
+    [address]="address"
+    [city]="city"
+    [phone]="phone"
+    [subTotal]="getSubTotal()"
+    [tax]="tax"
+    [openModal]="openModal"
+    (onCloseModal)="onCloseModal($event)"
+></cart-modal>

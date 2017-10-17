@@ -20,6 +20,8 @@ export class CartFormComponent {
 
   @Input() public validQty: boolean;
 
+  @Output() public onCheckoutForm = new EventEmitter();
+
   constructor(
     @Inject(FormBuilder) fb: FormBuilder
   ) {
@@ -37,6 +39,21 @@ export class CartFormComponent {
         [Validators.required, Validators.minLength(6)]
       )],
     });
+  }
+
+  public onCheckoutFormClick(event) {
+    if (this.validation()) {
+      this.onCheckoutForm.emit(
+          {
+              name: this.name,
+              address: this.address,
+              city: this.city,
+              phone: this.phone,
+          }
+      );
+
+      this.form.reset();
+    }
   }
 
   private validation() {

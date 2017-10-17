@@ -40,6 +40,7 @@ import { ProductComponent } from './components/product';
 import { ShopAllComponent } from './components/shop-all';
 import { CartComponent } from './components/cart';
 import { CartFormComponent } from './components/cart/cart-form';
+import { CartModalComponent } from './components/cart/cart-modal';
 import { NoContentComponent } from './components/no-content';
 
 import '../styles/bootstrap.scss';
@@ -76,6 +77,7 @@ type StoreType = {
     ShopAllComponent,
     CartComponent,
     CartFormComponent,
+    CartModalComponent,
     NoContentComponent,
     Parallax
   ],
