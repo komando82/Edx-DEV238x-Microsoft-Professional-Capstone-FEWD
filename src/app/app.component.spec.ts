@@ -54,7 +54,7 @@ describe(`App`, () => {
     expect(comp.angularclassLogo).toEqual('assets/img/angularclass-avatar.png');
     expect(comp.name).toEqual('Angular 2 Webpack Starter');
   });
-
+  /*
   it('should log ngOnInit', () => {
     spyOn(console, 'log');
     expect(console.log).not.toHaveBeenCalled();
@@ -62,5 +62,6 @@ describe(`App`, () => {
     comp.ngOnInit();
     expect(console.log).toHaveBeenCalled();
   });
+  */
 
 });
