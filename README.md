@@ -12,3 +12,17 @@ The additional packages used:
 
 JSON data endpoint:
 [https://webmppcapstone.blob.core.windows.net/data/itemsdata.json](https://webmppcapstone.blob.core.windows.net/data/itemsdata.json)
+
+Installing:
+npm install
+
+Build files:
+npm run build:prod
+
+Server:
+- development
+npm run server
+
+- production
+npm run build:prod
+npm run server:prod
